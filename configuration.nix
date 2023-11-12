@@ -65,6 +65,26 @@
 
   
   services={
+    # postgresql
+    postgresql = {
+      enable = true;
+      package = pkgs.postgresql;
+      # dataDir = "~/.data/postgresql";
+      # authentication = pkgs.lib.mkOverride 10 ''
+      # #type database  DBuser  auth-method
+      # local all       all     trust
+      # '';
+      # authentication = pkgs.lib.mkForce "host all all 127.0.0.1/32 trust";
+      # authentication = ''
+      #   local all   postgres       peer map=eroot
+      # '';
+      # identMap = ''
+      #   eroot     root      postgres
+      #   eroot     postgres  postgres
+      # '';
+    };   
+
+
     # Enable the X11 windowing system.
     xserver = {
 	    enable = true;
@@ -156,7 +176,6 @@
       zsh-powerlevel10k
       firefox   
       git 
-      postgresql
       firefox
       kate
       vscode
