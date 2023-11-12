@@ -22,6 +22,7 @@
       };
       efi.canTouchEfiVariables = true;
       timeout = 1;
+      
     };
   };
 

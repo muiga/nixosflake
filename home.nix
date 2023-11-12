@@ -4,7 +4,8 @@ let
     upgrade-system = "sudo nixos-rebuild switch --flake ~/.dotfiles";
     upgrade-home = "home-manager switch --flake ~/.dotfiles";
     update-pkgs = "cd ~/.dotfiles && nix flake update && cd";
-    clean-nix = "nix-collect-garbage -d";
+    clean-home = "nix-collect-garbage -d";
+    clean-system = "sudo nix-collect-garbage -d";
     psql-u ="sudo -u postgres psql";
   };
 
