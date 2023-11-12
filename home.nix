@@ -4,6 +4,7 @@ let
     upgrade-system = "sudo nixos-rebuild switch --flake ~/.dotfiles";
     upgrade-home = "home-manager switch --flake ~/.dotfiles";
     update-pkgs = "cd ~/.dotfiles && nix flake update && cd";
+    nix-clean = "nix-collect-garbage -d";
   };
 
 in
