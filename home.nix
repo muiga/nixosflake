@@ -1,8 +1,9 @@
 { config, pkgs, ... }:
 let 
   myAliases ={
-    update-system = "sudo nixos-rebuild switch --flake ~/.dotfiles";
-    update-home = "home-manager switch --flake ~/.dotfiles";
+    upgrade-system = "sudo nixos-rebuild switch --flake ~/.dotfiles";
+    upgrade-home = "home-manager switch --flake ~/.dotfiles";
+    update-pkgs = "cd ~/.dotfiles && nix flake update && cd";
   };
 
 in
