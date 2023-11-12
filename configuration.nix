@@ -156,6 +156,57 @@
       zsh-powerlevel10k
       firefox   
       git 
+      postgresql
+      firefox
+      kate
+      vscode
+      vlc
+      brave
+      git
+      curl
+      thunderbird
+      latte-dock
+      inkscape-with-extensions
+      insomnia
+      haruna
+      discord
+      motrix
+      persepolis
+      lightly-qt
+      sierra-breeze-enhanced
+      onedrive
+      obs-studio
+      easyeffects
+      nodejs_18
+      htop
+      gwenview
+      ferdium
+      rambox
+      libreoffice
+      pdfarranger
+      winbox
+      todoist-electron
+      megasync
+      motrix
+      clipgrab
+      ffmpeg
+      youtube-dl
+      epsonscan2
+      libva
+      libva-utils
+      mpv
+      smplayer
+      filebot
+      ngrok  
+      anydesk
+      protonvpn-gui
+      mellowplayer
+      tailscale
+      handbrake
+      qbittorrent
+      joplin-desktop
+      shotcut
+      clementine
     ];
 
     

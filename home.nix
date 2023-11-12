@@ -4,7 +4,7 @@ let
     upgrade-system = "sudo nixos-rebuild switch --flake ~/.dotfiles";
     upgrade-home = "home-manager switch --flake ~/.dotfiles";
     update-pkgs = "cd ~/.dotfiles && nix flake update && cd";
-    nix-clean = "nix-collect-garbage -d";
+    clean-nix = "nix-collect-garbage -d";
   };
 
 in
@@ -19,56 +19,6 @@ in
   # environment.
   home.packages = with pkgs; [
  
-      firefox
-      kate
-      vscode
-      vlc
-      brave
-      git
-      curl
-      thunderbird
-      latte-dock
-      inkscape-with-extensions
-      insomnia
-      haruna
-      discord
-      motrix
-      persepolis
-      lightly-qt
-      sierra-breeze-enhanced
-      onedrive
-      obs-studio
-      easyeffects
-      nodejs_18
-      htop
-      gwenview
-      ferdium
-      rambox
-      libreoffice
-      pdfarranger
-      winbox
-      todoist-electron
-      megasync
-      motrix
-      clipgrab
-      ffmpeg
-      youtube-dl
-      epsonscan2
-      libva
-      libva-utils
-      mpv
-      smplayer
-      filebot
-      ngrok  
-      anydesk
-      protonvpn-gui
-      mellowplayer
-      tailscale
-      handbrake
-      qbittorrent
-      joplin-desktop
-      shotcut
-      clementine
 ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
