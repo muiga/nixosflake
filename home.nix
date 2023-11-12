@@ -73,7 +73,7 @@ in
     }  
     ];
     initExtra = '' 
-      source ./.p10k.zsh
+      source .p10k.zsh
     '';
     # histSize = 10000;
     # histFile = "${config.xdg.dataHome}/zsh/history";    
