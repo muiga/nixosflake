@@ -199,6 +199,8 @@
       libsForQt5.soundkonverter
       libsForQt5.kruler
       fwupd
+      sbctl
+      niv
     ];
     shells = with pkgs; [
       zsh

@@ -6,10 +6,12 @@
         nixpkgs.url="nixpkgs/nixos-unstable";
         home-manager.url = "github:nix-community/home-manager/master";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
+        lanzaboote.url ="github:nix-community/lanzaboote/v0.3.0";
+        lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
     };
 
 
-    outputs ={self, nixpkgs, home-manager, ...}:
+    outputs ={self, nixpkgs, home-manager, lanzaboote, ...}:
 
     let
         lib = nixpkgs.lib;
