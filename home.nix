@@ -5,7 +5,7 @@ let
     upgrade-home = "home-manager switch --flake ~/.dotfiles";
     update-pkgs = "cd ~/.dotfiles && nix flake update && cd";
     clean-nix = "nix-collect-garbage -d";
-    psql ="sudo -u postgres psql";
+    psql-u ="sudo -u postgres psql";
   };
 
 in
