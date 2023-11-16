@@ -6,7 +6,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # ./pcloud.nix
     ];
 
   # Bootloader.
@@ -184,7 +183,8 @@
       brave
       git
       curl
-      thunderbird
+      # thunderbird
+      # betterbird
       latte-dock
       inkscape-with-extensions
       insomnia
