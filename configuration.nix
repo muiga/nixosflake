@@ -183,8 +183,8 @@
       brave
       git
       curl
-      # thunderbird
-      # betterbird
+      thunderbird
+      betterbird
       latte-dock
       inkscape-with-extensions
       insomnia
@@ -219,7 +219,6 @@
       filebot
       ngrok  
       anydesk
-      protonvpn-gui
       mellowplayer
       tailscale
       handbrake
