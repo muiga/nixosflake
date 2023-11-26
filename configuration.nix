@@ -226,6 +226,7 @@
       joplin-desktop
       shotcut
       clementine
+      arduino
     ];
 
     
