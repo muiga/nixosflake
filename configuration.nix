@@ -12,8 +12,7 @@
   boot ={
     kernelPackages = pkgs.linuxPackages_latest;
     # Video drivers
-    initrd.kernelModules = [ "amdgpu" ];       
-
+    initrd.kernelModules = [ "amdgpu" ];  
     loader = {
       systemd-boot = {
         enable =true;
@@ -21,23 +20,18 @@
       };
       efi.canTouchEfiVariables = true;
       timeout = 1;
-      
     };
-  };
 
+     # Reduce swappiness
+    kernel.sysctl = { "swappiness" = 10;};
+  };
+  # timeout service stop
   systemd.extraConfig = ''
     DefaultTimeoutStopSec=5s
   '';
 
-  # hardware accelation
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [  
-      vaapiVdpau
-      libvdpau-va-gl
-    ];
-  };
 
+# Networking
   networking ={
     hostName = "nixos"; # Define your hostname.
       # Enable networking
@@ -47,24 +41,53 @@
       enable = true;
       allowedTCPPorts = [80 443 ];
       allowedTCPPortRanges = [ 
-        { from = 1714; to = 1764; } # KDE Connect
+        { from = 1714; to = 25000; } # 1714 to 1716 for KDE Connect and 8384 to 22000 for Syncthing
       ];  
       allowedUDPPortRanges = [
         { from = 4000; to = 4007; }
         { from = 8000; to = 8010; }
-        { from = 1714; to = 1764; } # KDE Connect
+        { from = 1714; to = 25000; } # 1714 to 1716 for KDE Connect and 22000 to 21027 for Syncthing
       ];
+    };
+  };
+
+  # Hardware services such as Bluetooth and Sound
+  hardware ={
+    bluetooth.enable = true;
+    pulseaudio.enable = false;
+        # hardware accelation
+    opengl = {
+     enable = true;
+     extraPackages = with pkgs; [  
+      vaapiVdpau
+      libvdpau-va-gl
+     ];
+     driSupport32Bit = true;
     };
   };
 
   # Set your time zone.
   time.timeZone = "Africa/Nairobi";
-
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   
+  # All Services......
   services={
+
+    # Enable the X11 windowing system.
+    xserver = {
+	    enable = true;
+	    layout = "us";
+	    xkbVariant = "";
+      displayManager = {
+	      sddm.enable = true;
+        sddm.theme = "${import ./sddm-theme.nix {inherit pkgs;}}";
+  	    defaultSession = "plasmawayland";
+      };
+      desktopManager.plasma5.enable = true;	
+    };
+
     # postgresql
     postgresql = {
       enable = true;
@@ -84,19 +107,6 @@
       # '';
     };   
 
-
-    # Enable the X11 windowing system.
-    xserver = {
-	    enable = true;
-	    layout = "us";
-	    # xkbVariant = "";
-      displayManager = {
-	      sddm.enable = true;
-        sddm.theme = "${import ./sddm-theme.nix {inherit pkgs;}}";
-  	    defaultSession = "plasmawayland";
-      };
-      desktopManager.plasma5.enable = true;	
-    };
     # Enable CUPS to print documents.
     printing = {                                # Printing and drivers for TS5300
       enable = true;
@@ -111,6 +121,8 @@
         userServices = true;
       };
     };
+
+    # Audio
     pipewire = {                            # Sound
       enable = true;
       alsa = {
@@ -119,52 +131,55 @@
       };
       pulse.enable = true;
       jack.enable = true;
-      #media-session.enable = true;
+      wireplumber.enable = true;
     };
+
+    # Printing
     tailscale.enable = true; 
+
+    #Syncthing
+    syncthing = {
+        enable = true;
+        user = "muiga";
+        dataDir = "/home/muiga/Sync";    # Default folder for new synced folders
+        configDir = "/home/muiga/Sync/.config/syncthing";   # Folder for Syncthing's settings and keys
+    };
+
+        #Auto-CPUFreq for power management on Laptops
+    auto-cpufreq.enable = true;
+
     # Enable the OpenSSH daemon.
     openssh = {                             # SSH: secure shell (remote connection to shell of server)
-      enable = true;                        # local: $ ssh <user>@<ip>
-                                            # public:
-                                            #   - port forward 22 TCP to server
-                                            #   - in case you want to use the domain name insted of the ip:
-                                            #       - for me, via cloudflare, create an A record with name "ssh" to the correct ip without proxy
-                                            #   - connect via ssh <user>@<ip or ssh.domain>
-                                            # generating a key:
-                                            #   - $ ssh-keygen   |  ssh-copy-id <ip/domain>  |  ssh-add
-                                            #   - if ssh-add does not work: $ eval `ssh-agent -s`
-      allowSFTP = true;                     # SFTP: secure file transfer protocol (send file to server)
-                                            # connect: $ sftp <user>@<ip/domain>
-                                            #   or with file browser: sftp://<ip address>
-                                            # commands:
-                                            #   - lpwd & pwd = print (local) parent working directory
-                                            #   - put/get <filename> = send or receive file
+      enable = true;                        
+      allowSFTP = true;                     # SFTP: secure file transfer protocol (send file to server)                                            
       extraConfig = ''
         HostKeyAlgorithms +ssh-rsa
       '';                                   # Temporary extra config so ssh will work in guacamole
     };
     # Enable flatpak
     flatpak.enable = true;                  # download flatpak file from website - sudo flatpak install <path> - reboot if not showing up
-  };
-# all hardaware
-  hardware ={
-    pulseaudio.enable = false;
+    blueman.enable = true;
+    fwupd.enable = true;  
   };
 
-#enable bluetooth
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
 
-  services.fwupd.enable = true;
-
-  # Enable sound 
-  sound.enable = true;
-  # security
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
- 
-  virtualisation.docker.enable = true;
-  # virtualisation.virtualbox.host.enable = true;
+   # zsh and ohmyzsh
+  programs = {
+    dconf.enable = true;
+    gamemode.enable = true;
+    zsh.enable =true;
+     # backlight control
+    kdeconnect.enable = true;
+    light.enable = true;
+    partition-manager.enable = true;
+    java.enable = true;
+    #Gaming
+    steam = {
+     enable = true;
+     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    };
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.muiga = {
@@ -175,16 +190,10 @@
     packages = with pkgs; [
       zsh-powerlevel10k
       firefox   
-      git 
-      firefox
       kate
       vscode
       vlc
-      brave
-      git
-      curl
-      thunderbird
-      betterbird
+      brave      
       latte-dock
       inkscape-with-extensions
       insomnia
@@ -202,7 +211,7 @@
       gwenview
       ferdium
       rambox
-      libreoffice
+      libreoffice-qt
       pdfarranger
       winbox
       todoist-electron
@@ -227,34 +236,62 @@
       shotcut
       clementine
       arduino
+      sleuthkit
+      bottom
+      microsoft-edge
     ];
-
-    
   };
 
-  # zsh and ohmyzsh
-  programs = {
-    dconf.enable = true;
-    zsh.enable =true;
-     # backlight control
-    light.enable = true;
+
+  # Enable sound 
+  sound.enable = true;    
+  # security
+  security.rtkit.enable = true;
+  security.polkit.enable = true;
+
+
+ 
+  # virtualisation.docker.enable = true;
+  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
+  virtualisation = {
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+    virtualbox = {
+      host.enable = true;
+    };
   };
+
+  #
+ 
 
   #Fonts
-  fonts.packages = with pkgs; [                # Fonts
-    carlito                                 # NixOS
-    vegur                                   # NixOS
+  fonts.packages = with pkgs; [
+    inter                
+    carlito                                 
+    vegur                                  
     source-code-pro
     meslo-lgs-nf
     jetbrains-mono
-    font-awesome                            # Icons
-    corefonts                               # MS
-    (nerdfonts.override {                   # Nerdfont Icons override
+    font-awesome                            
+    corefonts                               
+    (nerdfonts.override {                   
       fonts = [
         "FiraCode"
       ];
     })
   ];
+
+  fonts.fontconfig = {
+      enable = true;
+      defaultFonts = {
+      monospace = [ "JetBrainsMono Nerd Font Mono" ];
+	    serif = [ "Noto Serif" "Inter" ];
+	    sansSerif = [ "Noto Sans" "Inter"];
+      };
+  };
 
   environment = {
     systemPackages = with pkgs;[
@@ -272,14 +309,35 @@
       fwupd
       sbctl
       niv
+      android-tools
+      polkit
+      syncthing
+      syncthing-tray
+      neofetch
+      gitRepo
+      wget
+      curl
+      git
     ];
     shells = with pkgs; [
       zsh
     ];
   };
-  system.stateVersion = "23.05"; # Did you read the comment?
+
+
+  system = {
+    # copySystemConfiguration = true;
+    autoUpgrade.enable = true;
+    stateVersion = "23.05"; # Defines whether the base is based on the point releases or the unstable release
+  };
+
+
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config={
+    allowUnfree = true;
+    allowUnfreePredicate = (pkg: builtins.elem (builtins.parseDrvName pkg.name).name [ "steam" ]);
+  };
+
   nix = {                                   # Nix Package Manager settings
     settings ={
       # auto-optimise-store = true;           # Optimise syslinks
@@ -292,8 +350,5 @@
     };
    
   };
-
-
-
 
 }
