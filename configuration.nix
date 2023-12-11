@@ -239,6 +239,8 @@
       sleuthkit
       bottom
       microsoft-edge
+      # postman
+      spotify
     ];
   };
 
@@ -328,7 +330,7 @@
   system = {
     # copySystemConfiguration = true;
     autoUpgrade.enable = true;
-    stateVersion = "23.05"; # Defines whether the base is based on the point releases or the unstable release
+    stateVersion = "23.11"; # Defines whether the base is based on the point releases or the unstable release
   };
 
 

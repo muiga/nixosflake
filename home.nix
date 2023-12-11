@@ -5,7 +5,7 @@ let
     upgrade-home = "home-manager switch --flake ~/.dotfiles";
     update-pkgs = "cd ~/.dotfiles && nix flake update && cd";
     clean-home = "nix-collect-garbage -d";
-    clean-system = "sudo nix-collect-garbage -d";
+    clean-system = "sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     psql-u ="sudo -u postgres psql";
   };
 
@@ -14,7 +14,7 @@ in
 
   home.username = "muiga";
   home.homeDirectory = "/home/muiga";
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+  home.stateVersion = "23.11"; # Please read the comment before changing.
     # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # The home.packages option allows you to install Nix packages into your
