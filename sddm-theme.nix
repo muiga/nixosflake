@@ -1,11 +1,10 @@
 { pkgs }:
 
 let
-  imgLink = "https://images.unsplash.com/photo-1603468620905-8de7d86b781e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80";
-
+  imgLink = "https://images.pexels.com/photos/354939/pexels-photo-354939.jpeg";
   image = pkgs.fetchurl {
     url = imgLink;
-    sha256 = "sha256-qRpThlatbOjPSAGnMDgGBsNvLm09zCx/s9ufAGNkRrM=";
+    sha256 = "sha256-8PRiJ3TLu5wxyOxG+4Y1TmQOkIqYUOOp8jfuTbE7Neo=";
   };
 in
 pkgs.stdenv.mkDerivation {

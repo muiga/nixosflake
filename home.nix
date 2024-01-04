@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let 
   myAliases ={
-    upgrade-system = "sudo nixos-rebuild switch --flake ~/.dotfiles";
+    upgrade-system = "sudo nixos-rebuild switch --show-trace --flake ~/.dotfiles";
     upgrade-home = "home-manager switch --flake ~/.dotfiles";
     update-pkgs = "cd ~/.dotfiles && nix flake update && cd";
     clean-home = "nix-collect-garbage -d";
@@ -14,7 +14,6 @@ in
 
   home.username = "muiga";
   home.homeDirectory = "/home/muiga";
-  home.stateVersion = "23.11"; # Please read the comment before changing.
     # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   # The home.packages option allows you to install Nix packages into your
@@ -80,4 +79,7 @@ in
   };
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  home.stateVersion = "23.11"; # Please read the comment before changing.
+
 }

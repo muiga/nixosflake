@@ -241,6 +241,10 @@
       microsoft-edge
       # postman
       spotify
+      telegram-desktop
+      bitwarden
+      appimage-run
+      unstable.bruno
     ];
   };
 
@@ -278,7 +282,10 @@
     meslo-lgs-nf
     jetbrains-mono
     font-awesome                            
-    corefonts                               
+    corefonts  
+    roboto
+    roboto-mono
+    roboto-serif                             
     (nerdfonts.override {                   
       fonts = [
         "FiraCode"
@@ -290,8 +297,8 @@
       enable = true;
       defaultFonts = {
       monospace = [ "JetBrainsMono Nerd Font Mono" ];
-	    serif = [ "Noto Serif" "Inter" ];
-	    sansSerif = [ "Noto Sans" "Inter"];
+	    serif = [ "Roboto Serif" "Inter" ];
+	    sansSerif = [ "Roboto" "Inter"];
       };
   };
 
@@ -300,7 +307,6 @@
       libsForQt5.packagekit-qt
       libsForQt5.bismuth
       libsForQt5.kdenlive
-      libsForQt5.sddm-kcm
       libsForQt5.kdeconnect-kde
       epson-escpr2
       libsForQt5.plasma-nm
@@ -308,6 +314,7 @@
       libsForQt5.qt5.qtgraphicaleffects
       libsForQt5.soundkonverter
       libsForQt5.kruler
+      libsForQt5.sddm-kcm
       fwupd
       sbctl
       niv
@@ -338,6 +345,7 @@
   nixpkgs.config={
     allowUnfree = true;
     allowUnfreePredicate = (pkg: builtins.elem (builtins.parseDrvName pkg.name).name [ "steam" ]);
+
   };
 
   nix = {                                   # Nix Package Manager settings

@@ -8,30 +8,56 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   boot.initrd.luks.devices = {
     root = {
-      device = "/dev/disk/by-uuid/0ccee04f-5114-4c93-8231-b8bde58ccc6e";
+      device = "/dev/disk/by-uuid/801df885-8c23-46f4-ac51-590fe7428e72";
       preLVM = true;
       allowDiscards = true;
     };
   };
+
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/c8cde4e8-1ef7-4a74-84b4-0010d21837b0";
+    { device = "/dev/disk/by-uuid/77986d95-bf52-48d9-a315-a58f9dfcac34";
       fsType = "btrfs";
+      options = [ "subvol=root" ];
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/77986d95-bf52-48d9-a315-a58f9dfcac34";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/77986d95-bf52-48d9-a315-a58f9dfcac34";
+      fsType = "btrfs";
+      options = [ "subvol=nix" ];
+    };
+
+  fileSystems."/persist" =
+    { device = "/dev/disk/by-uuid/77986d95-bf52-48d9-a315-a58f9dfcac34";
+      fsType = "btrfs";
+      options = [ "subvol=persist" ];
+    };
+
+  fileSystems."/var/log" =
+    { device = "/dev/disk/by-uuid/77986d95-bf52-48d9-a315-a58f9dfcac34";
+      fsType = "btrfs";
+      options = [ "subvol=log" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/1F3A-8AD7";
+    { device = "/dev/disk/by-uuid/DF8A-D181";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/a457b7b4-e695-4688-98b9-8e3e66dd6fb8"; }
+    [ { device = "/dev/disk/by-uuid/1a2a0ef3-a250-40b4-a41c-fa0417708e40"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
