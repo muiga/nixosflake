@@ -191,7 +191,6 @@
       zsh-powerlevel10k
       firefox   
       kate
-      vscode
       vlc
       brave      
       latte-dock
@@ -239,12 +238,12 @@
       sleuthkit
       bottom
       microsoft-edge
-      # postman
-      spotify
+      spotify-qt
       telegram-desktop
       bitwarden
       appimage-run
       unstable.bruno
+      unstable.vscode
     ];
   };
 

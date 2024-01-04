@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let 
   myAliases ={
-    upgrade-system = "sudo nixos-rebuild switch --show-trace --flake ~/.dotfiles";
+    upgrade-system = "sudo nixos-rebuild switch --flake ~/.dotfiles";
     upgrade-home = "home-manager switch --flake ~/.dotfiles";
     update-pkgs = "cd ~/.dotfiles && nix flake update && cd";
     clean-home = "nix-collect-garbage -d";

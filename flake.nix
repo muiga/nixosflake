@@ -1,5 +1,5 @@
 {
-    description = "My first flake";
+    description = "My Awesome flake";
 
 
     inputs ={
