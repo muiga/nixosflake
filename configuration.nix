@@ -238,12 +238,13 @@
       sleuthkit
       bottom
       microsoft-edge
-      spotify-qt
+      spotify
       telegram-desktop
       bitwarden
       appimage-run
       unstable.bruno
       unstable.vscode
+      unstable.protonvpn-gui
     ];
   };
 

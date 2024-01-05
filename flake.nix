@@ -9,11 +9,12 @@
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
         lanzaboote.url ="github:nix-community/lanzaboote/v0.3.0";
         lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
-        
+        kde2nix.url = "github:nix-community/kde2nix";
+
     };
 
 
-    outputs ={self, nixpkgs, nixpkgs-unstable, home-manager, lanzaboote, ...}:
+    outputs ={self, nixpkgs, nixpkgs-unstable, home-manager, kde2nix, lanzaboote, ...}:
 
     let
         system = "x86_64-linux";
@@ -36,10 +37,17 @@
                     ({ config, pkgs, ... }: {
                         nixpkgs.overlays = [ overlay-nixpkgs ];
                     })
+
+                    # kde Plasma 6
+                    kde2nix.nixosModules.plasma6
+                    
+                    # main config file
                     ./configuration.nix
                     # This is not a complete NixOS configuration and you need to reference
                     # your normal configuration here.
+                   
 
+                    # Lanzaboote for secure boot
                     lanzaboote.nixosModules.lanzaboote
                    ({ pkgs, lib, ... }: {
                         # Lanzaboote currently replaces the systemd-boot module.
