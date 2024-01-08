@@ -231,7 +231,6 @@
       tailscale
       handbrake
       qbittorrent
-      joplin-desktop
       shotcut
       clementine
       arduino
@@ -245,6 +244,9 @@
       unstable.bruno
       unstable.vscode
       unstable.protonvpn-gui
+      unstable.planify
+      unstable.ticktick
+      unstable.joplin-desktop
     ];
   };
 
