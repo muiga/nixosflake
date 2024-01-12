@@ -108,21 +108,21 @@
     };  
 
     # grafana
-    services.grafana = {
-  enable = true;
-  settings = {
-    server = {
-      # Listening Address
-      http_addr = "127.0.0.1";
-      # and Port
-      http_port = 3001;
-      # Grafana needs to know on which domain and URL it's running
-      # domain = "your.domain";
-      # root_url = "https://your.domain/grafana/"; # Not needed if it is `https://your.domain/`
-      # serve_from_sub_path = true;
-    };
-  };
-}; 
+    grafana = {
+      enable = true;
+      settings = {
+          server = {
+            # Listening Address
+            http_addr = "127.0.0.1";
+            # and Port
+            http_port = 3001;
+            # Grafana needs to know on which domain and URL it's running
+            # domain = "your.domain";
+            # root_url = "https://your.domain/grafana/"; # Not needed if it is `https://your.domain/`
+            # serve_from_sub_path = true;
+          };
+        };
+    }; 
 
     # Enable CUPS to print documents.
     printing = {                                # Printing and drivers for TS5300
