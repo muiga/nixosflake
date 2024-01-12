@@ -9,12 +9,15 @@
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
         lanzaboote.url ="github:nix-community/lanzaboote/v0.3.0";
         lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
-        kde2nix.url = "github:nix-community/kde2nix";
+        # kde2nix.url = "github:nix-community/kde2nix";
 
     };
 
 
-    outputs ={self, nixpkgs, nixpkgs-unstable, home-manager, kde2nix, lanzaboote, ...}:
+    outputs ={self, nixpkgs, nixpkgs-unstable, home-manager, 
+        # kde2nix, 
+        lanzaboote, ...
+        }:
 
     let
         system = "x86_64-linux";
@@ -39,7 +42,7 @@
                     })
 
                     # kde Plasma 6
-                    kde2nix.nixosModules.plasma6
+                    # kde2nix.nixosModules.plasma6
                     
                     # main config file
                     ./configuration.nix
