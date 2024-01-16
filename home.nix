@@ -8,6 +8,8 @@ let
     clean-system = "sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     psql-u ="sudo -u postgres psql";
     connect-ec2 = "ssh -i ~/.ssh/i-keys.pem ubuntu@ec2-3-76-209-240.eu-central-1.compute.amazonaws.com";
+    connect-contabo-prod = "ssh root@144.91.119.192";
+    connect-contabo-test = "ssh root@84.247.133.143";
   };
 
 in
