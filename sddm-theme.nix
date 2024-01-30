@@ -4,7 +4,7 @@ let
   imgLink = "https://images.pexels.com/photos/354939/pexels-photo-354939.jpeg";
   image = pkgs.fetchurl {
     url = imgLink;
-    sha256 = "sha256-8PRiJ3TLu5wxyOxG+4Y1TmQOkIqYUOOp8jfuTbE7Neo=";
+    sha256 = "sha256-Ip/8pkz6X95u7FTkEkPnVlDD7OHtKXBAAW/BRYx0kCQ=";
   };
 in
 pkgs.stdenv.mkDerivation {
