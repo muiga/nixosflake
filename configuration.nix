@@ -264,6 +264,7 @@
       unstable.planify
       unstable.ticktick
       unstable.joplin-desktop
+      unstable.jetbrains.webstorm
     ];
   };
 
