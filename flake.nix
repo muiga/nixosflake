@@ -3,30 +3,23 @@
 
 
     inputs ={
-        nixpkgs.url="nixpkgs/nixos-23.11";
-        nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-        home-manager.url = "github:nix-community/home-manager/release-23.11";
-        home-manager.inputs.nixpkgs.follows = "nixpkgs";
+        nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+        home-manager = {
+            url = "github:nix-community/home-manager";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
         lanzaboote.url ="github:nix-community/lanzaboote/v0.3.0";
         lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
-        # kde2nix.url = "github:nix-community/kde2nix";
 
     };
 
 
-    outputs ={self, nixpkgs, nixpkgs-unstable, home-manager, 
-        # kde2nix, 
+    outputs ={self, nixpkgs, home-manager, 
         lanzaboote, ...
         }:
 
     let
-        system = "x86_64-linux";
-        overlay-nixpkgs = final: prev: {       
-            unstable = import nixpkgs-unstable {
-                inherit system;
-            config.allowUnfree = true;
-            };
-        };
+        system = "x86_64-linux";     
         lib = nixpkgs.lib;
         pkgs = nixpkgs.legacyPackages.${system};
     in {
@@ -36,14 +29,7 @@
         nixosConfigurations = {
             nixos= lib.nixosSystem {
                 inherit system;
-                modules = [
-                    ({ config, pkgs, ... }: {
-                        nixpkgs.overlays = [ overlay-nixpkgs ];
-                    })
-
-                    # kde Plasma 6
-                    # kde2nix.nixosModules.plasma6
-                    
+                modules = [                    
                     # main config file
                     ./configuration.nix
                     # This is not a complete NixOS configuration and you need to reference

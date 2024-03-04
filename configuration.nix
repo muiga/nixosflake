@@ -83,9 +83,10 @@
       displayManager = {
 	      sddm.enable = true;
         sddm.theme = "${import ./sddm-theme.nix {inherit pkgs;}}";
-  	    defaultSession = "plasmawayland";
+  	    defaultSession = "plasma";
+        sddm.wayland.enable = true;
       };
-      desktopManager.plasma5.enable = true;	
+      desktopManager.plasma6.enable = true;	
     };
 
     # postgresql
@@ -231,7 +232,7 @@
       pdfarranger
       winbox
       todoist-electron
-      megasync
+      # megasync
       motrix
       clipgrab
       ffmpeg
@@ -241,7 +242,7 @@
       libva-utils
       mpv
       smplayer
-      filebot
+      # filebot
       ngrok  
       anydesk
       mellowplayer
@@ -258,13 +259,13 @@
       telegram-desktop
       bitwarden
       appimage-run
-      unstable.bruno
-      unstable.vscode
-      unstable.protonvpn-gui
-      unstable.planify
-      unstable.ticktick
-      unstable.joplin-desktop
-      unstable.jetbrains.webstorm
+      bruno
+      vscode
+      protonvpn-gui
+      planify
+      ticktick
+      joplin-desktop
+      jetbrains.webstorm
     ];
   };
 
@@ -322,19 +323,23 @@
       };
   };
 
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [ 
+  oxygen
+];
+
   environment = {
     systemPackages = with pkgs;[
-      libsForQt5.packagekit-qt
-      libsForQt5.bismuth
-      libsForQt5.kdenlive
-      libsForQt5.kdeconnect-kde
+      # libsForQt5.packagekit-qt
+      # libsForQt5.bismuth
+      # libsForQt5.kdenlive
+      # libsForQt5.kdeconnect-kde
       epson-escpr2
-      libsForQt5.plasma-nm
-      libsForQt5.qt5.qtquickcontrols2
-      libsForQt5.qt5.qtgraphicaleffects
-      libsForQt5.soundkonverter
-      libsForQt5.kruler
-      libsForQt5.sddm-kcm
+      # libsForQt5.plasma-nm
+      # libsForQt5.qt5.qtquickcontrols2
+      # libsForQt5.qt5.qtgraphicaleffects
+      # libsForQt5.soundkonverter
+      # libsForQt5.kruler
+      # libsForQt5.sddm-kcm
       fwupd
       sbctl
       niv
