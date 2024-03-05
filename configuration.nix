@@ -78,14 +78,15 @@
     # Enable the X11 windowing system.
     xserver = {
 	    enable = true;
-	    layout = "us";
-	    xkbVariant = "";
+	    xkb.layout = "us";
+	    xkb.variant = "";
       displayManager = {
 	      sddm.enable = true;
-        sddm.theme = "${import ./sddm-theme.nix {inherit pkgs;}}";
-  	    defaultSession = "plasmawayland";
+        #sddm.theme = "${import ./sddm-theme.nix {inherit pkgs;}}";
+  	    defaultSession = "plasma";
+        sddm.wayland.enable = true;
       };
-      desktopManager.plasma5.enable = true;	
+      desktopManager.plasma6.enable = true;	
     };
 
     # postgresql
@@ -108,22 +109,6 @@
     };  
 
     # grafana
-    grafana = {
-      enable = true;
-      settings = {
-          server = {
-            # Listening Address
-            http_addr = "127.0.0.1";
-            # and Port
-            http_port = 3001;
-            # Grafana needs to know on which domain and URL it's running
-            # domain = "your.domain";
-            # root_url = "https://your.domain/grafana/"; # Not needed if it is `https://your.domain/`
-            # serve_from_sub_path = true;
-          };
-        };
-    }; 
-
     # Enable CUPS to print documents.
     printing = {                                # Printing and drivers for TS5300
       enable = true;
@@ -131,7 +116,7 @@
     };
     avahi = {                                   # Needed to find wireless printer
       enable = true;
-      nssmdns = true;
+      nssmdns4 = true;
       publish = {                               # Needed for detecting the scanner
         enable = true;
         addresses = true;
@@ -231,7 +216,7 @@
       pdfarranger
       winbox
       todoist-electron
-      megasync
+      # megasync
       motrix
       clipgrab
       ffmpeg
@@ -241,7 +226,7 @@
       libva-utils
       mpv
       smplayer
-      filebot
+      # filebot
       ngrok  
       anydesk
       mellowplayer
@@ -258,13 +243,13 @@
       telegram-desktop
       bitwarden
       appimage-run
-      unstable.bruno
-      unstable.vscode
-      unstable.protonvpn-gui
-      unstable.planify
-      unstable.ticktick
-      unstable.joplin-desktop
-      unstable.jetbrains.webstorm
+      bruno
+      vscode
+      protonvpn-gui
+      planify
+      ticktick
+      joplin-desktop
+      jetbrains.webstorm
     ];
   };
 
@@ -324,17 +309,17 @@
 
   environment = {
     systemPackages = with pkgs;[
-      libsForQt5.packagekit-qt
-      libsForQt5.bismuth
-      libsForQt5.kdenlive
-      libsForQt5.kdeconnect-kde
+      # libsForQt5.packagekit-qt
+      # libsForQt5.bismuth
+      # libsForQt5.kdenlive
+      # libsForQt5.kdeconnect-kde
       epson-escpr2
-      libsForQt5.plasma-nm
-      libsForQt5.qt5.qtquickcontrols2
-      libsForQt5.qt5.qtgraphicaleffects
-      libsForQt5.soundkonverter
-      libsForQt5.kruler
-      libsForQt5.sddm-kcm
+      # libsForQt5.plasma-nm
+      # libsForQt5.qt5.qtquickcontrols2
+      # libsForQt5.qt5.qtgraphicaleffects
+      # libsForQt5.soundkonverter
+      # libsForQt5.kruler
+      # libsForQt5.sddm-kcm
       fwupd
       sbctl
       niv
