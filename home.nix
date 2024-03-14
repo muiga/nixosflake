@@ -3,7 +3,7 @@ let
   myAliases ={
     upgrade-system = "sudo nixos-rebuild switch --flake ~/.dotfiles";
     upgrade-home = "home-manager switch --flake ~/.dotfiles";
-    update-pkgs = "cd ~/.dotfiles && nix flake update && cd";
+    update-pkgs = "cd ~/.dotfiles && sudo nix flake update && cd";
     clean-home = "nix-collect-garbage -d";
     clean-system = "sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     psql-u ="sudo -u postgres psql";

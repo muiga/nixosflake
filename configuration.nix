@@ -76,6 +76,8 @@
   services={
 
     # Enable the X11 windowing system.
+    desktopManager.plasma6.enable = true;	
+
     xserver = {
 	    enable = true;
 	    xkb.layout = "us";
@@ -86,7 +88,6 @@
   	    defaultSession = "plasma";
         sddm.wayland.enable = true;
       };
-      desktopManager.plasma6.enable = true;	
     };
 
     # postgresql
@@ -202,8 +203,6 @@
       discord
       motrix
       persepolis
-      lightly-qt
-      sierra-breeze-enhanced
       onedrive
       obs-studio
       easyeffects
@@ -216,7 +215,7 @@
       pdfarranger
       winbox
       todoist-electron
-      # megasync
+      megasync
       motrix
       clipgrab
       ffmpeg
@@ -250,6 +249,7 @@
       ticktick
       joplin-desktop
       jetbrains.webstorm
+      gimp
     ];
   };
 
@@ -309,17 +309,12 @@
 
   environment = {
     systemPackages = with pkgs;[
-      # libsForQt5.packagekit-qt
-      # libsForQt5.bismuth
-      # libsForQt5.kdenlive
-      # libsForQt5.kdeconnect-kde
+      kdePackages.packagekit-qt
+      kdePackages.kdenlive
       epson-escpr2
-      # libsForQt5.plasma-nm
-      # libsForQt5.qt5.qtquickcontrols2
-      # libsForQt5.qt5.qtgraphicaleffects
-      # libsForQt5.soundkonverter
-      # libsForQt5.kruler
-      # libsForQt5.sddm-kcm
+      kdePackages.plasma-nm    
+      kdePackages.kruler
+      kdePackages.sddm-kcm
       fwupd
       sbctl
       niv
@@ -350,7 +345,9 @@
   nixpkgs.config={
     allowUnfree = true;
     allowUnfreePredicate = (pkg: builtins.elem (builtins.parseDrvName pkg.name).name [ "steam" ]);
-
+    permittedInsecurePackages = [
+      "freeimage-unstable-2021-11-01"
+    ];
   };
 
   nix = {                                   # Nix Package Manager settings
