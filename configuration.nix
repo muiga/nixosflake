@@ -76,7 +76,7 @@
   services={
 
     # Enable the X11 windowing system.
-    desktopManager.plasma6.enable = true;	
+    
 
     xserver = {
 	    enable = true;
@@ -88,6 +88,7 @@
   	    defaultSession = "plasma";
         sddm.wayland.enable = true;
       };
+      desktopManager.plasma6.enable = true;	
     };
 
     # postgresql
