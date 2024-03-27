@@ -76,7 +76,7 @@
   services={
 
     # Enable the X11 windowing system.
-    
+    desktopManager.plasma6.enable = true;	
 
     xserver = {
 	    enable = true;
@@ -88,7 +88,7 @@
   	    defaultSession = "plasma";
         sddm.wayland.enable = true;
       };
-      desktopManager.plasma6.enable = true;	
+      
     };
 
     # postgresql
@@ -197,7 +197,6 @@
       kate
       vlc
       brave      
-      latte-dock
       inkscape-with-extensions
       insomnia
       haruna
@@ -231,7 +230,7 @@
       anydesk
       mellowplayer
       tailscale
-      handbrake
+      # handbrake
       qbittorrent
       shotcut
       clementine
@@ -245,12 +244,15 @@
       appimage-run
       bruno
       vscode
+      # postman
       protonvpn-gui
       planify
       ticktick
       joplin-desktop
       jetbrains.webstorm
+      jetbrains.rust-rover
       gimp
+      super-productivity
     ];
   };
 
@@ -316,6 +318,8 @@
       kdePackages.plasma-nm    
       kdePackages.kruler
       kdePackages.sddm-kcm
+      kdePackages.kcolorpicker
+      kdePackages.kasts
       fwupd
       sbctl
       niv
