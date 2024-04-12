@@ -77,17 +77,17 @@
 
     # Enable the X11 windowing system.
     desktopManager.plasma6.enable = true;	
+    displayManager = {
+      sddm.enable = true;
+      #sddm.theme = "${import ./sddm-theme.nix {inherit pkgs;}}";
+      defaultSession = "plasma";
+      sddm.wayland.enable = true;
+    };
 
     xserver = {
 	    enable = true;
 	    xkb.layout = "us";
-	    xkb.variant = "";
-      displayManager = {
-	      sddm.enable = true;
-        #sddm.theme = "${import ./sddm-theme.nix {inherit pkgs;}}";
-  	    defaultSession = "plasma";
-        sddm.wayland.enable = true;
-      };
+	    xkb.variant = "";    
       
     };
 
