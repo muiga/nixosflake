@@ -138,7 +138,7 @@
       wireplumber.enable = true;
     };
 
-    # Printing
+    # vpn
     tailscale.enable = true; 
 
     #Syncthing
@@ -206,7 +206,7 @@
       onedrive
       obs-studio
       easyeffects
-      nodejs_18
+      nodejs_20
       htop
       gwenview
       ferdium
@@ -230,7 +230,7 @@
       anydesk
       mellowplayer
       tailscale
-      # handbrake
+      thunderbird
       qbittorrent
       shotcut
       clementine
@@ -253,6 +253,9 @@
       jetbrains.rust-rover
       gimp
       super-productivity
+      # node
+      nodePackages.prettier
+      
     ];
   };
 
@@ -320,6 +323,7 @@
       kdePackages.sddm-kcm
       kdePackages.kcolorpicker
       kdePackages.kasts
+      qt6.qtimageformats
       fwupd
       sbctl
       niv
@@ -353,6 +357,16 @@
     permittedInsecurePackages = [
       "freeimage-unstable-2021-11-01"
     ];
+    # packageOverrides = pkgs:  {
+
+    #   jetbrains.webstorm = pkgs.jetbrains.webstorm.overrideAttrs {
+    #       version = "2023.3.6";
+    #       # src = fetchurl {
+    #       #   url = "https://download-cdn.jetbrains.com/webstorm/WebStorm-2023.3.6.tar.gz";
+    #       #   sha256 = "deb38fe0f83a616cd07a2ec1243945ec15539c3d3a2e2f27294c5922737f0b5f";
+    #       # };
+    #   };
+    # };
   };
 
   nix = {                                   # Nix Package Manager settings
