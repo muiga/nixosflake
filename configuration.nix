@@ -255,7 +255,7 @@
       super-productivity
       # node
       nodePackages.prettier
-      
+      slack
     ];
   };
 
