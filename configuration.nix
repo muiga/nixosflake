@@ -256,6 +256,7 @@
       # node
       nodePackages.prettier
       slack
+      spotube
     ];
   };
 
