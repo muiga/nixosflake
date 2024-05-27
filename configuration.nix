@@ -253,10 +253,10 @@
       jetbrains.rust-rover
       gimp
       super-productivity
-      # node
       nodePackages.prettier
       slack
       spotube
+      stremio
     ];
   };
 
@@ -270,16 +270,16 @@
 
  
   # virtualisation.docker.enable = true;
-  users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
+  # users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
   virtualisation = {
     podman = {
       enable = true;
       dockerCompat = true;
       defaultNetwork.settings.dns_enabled = true;
     };
-    virtualbox = {
-      host.enable = true;
-    };
+    # virtualbox = {
+    #   host.enable = true;
+    # };
   };
 
   #
@@ -355,19 +355,10 @@
   nixpkgs.config={
     allowUnfree = true;
     allowUnfreePredicate = (pkg: builtins.elem (builtins.parseDrvName pkg.name).name [ "steam" ]);
-    permittedInsecurePackages = [
-      "freeimage-unstable-2021-11-01"
-    ];
-    # packageOverrides = pkgs:  {
-
-    #   jetbrains.webstorm = pkgs.jetbrains.webstorm.overrideAttrs {
-    #       version = "2023.3.6";
-    #       # src = fetchurl {
-    #       #   url = "https://download-cdn.jetbrains.com/webstorm/WebStorm-2023.3.6.tar.gz";
-    #       #   sha256 = "deb38fe0f83a616cd07a2ec1243945ec15539c3d3a2e2f27294c5922737f0b5f";
-    #       # };
-    #   };
-    # };
+    # permittedInsecurePackages = [
+    #   "freeimage-unstable-2021-11-01"
+    # ];
+   
   };
 
   nix = {                                   # Nix Package Manager settings
