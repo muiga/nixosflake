@@ -337,6 +337,8 @@
       wget
       curl
       git
+      oh-my-posh
+      stow
     ];
     shells = with pkgs; [
       zsh

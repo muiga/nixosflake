@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 let 
   myAliases ={
-    upgrade-system = "sudo nixos-rebuild switch --flake ~/.dotfiles";
-    upgrade-home = "home-manager switch --flake ~/.dotfiles";
-    update-pkgs = "cd ~/.dotfiles && sudo nix flake update && cd";
+    upgrade-system = "sudo nixos-rebuild switch --flake ~/.nixfiles";
+    upgrade-home = "home-manager switch --flake ~/.nixfiles";
+    update-pkgs = "cd ~/.nixfiles && sudo nix flake update && cd";
     clean-home = "nix-collect-garbage -d";
     clean-system = "sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     psql-u ="sudo -u postgres psql";
@@ -26,13 +26,13 @@ in
  
 ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
+  # Home Manager is pretty good at managing nixfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
+    # # Building this configuration will create a copy of 'nixfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
+    # ".screenrc".source = nixfiles/screenrc;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -68,15 +68,9 @@ in
     enableCompletion = true;
     dotDir = ".config/zsh";
     shellAliases = myAliases;
-    plugins=[
-        {
-    name = "powerlevel10k";
-    src = pkgs.zsh-powerlevel10k;
-    file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-    }  
-    ];
     initExtra = '' 
-      source ~/.dotfiles/.p10k.zsh
+       export PATH=$PATH:${pkgs.oh-my-posh}/bin
+       eval "$(oh-my-posh init zsh --config ~/.nixfiles/oh-my-posh/zen.toml)"
     '';
     # histSize = 10000;
     # histFile = "${config.xdg.dataHome}/zsh/history";    
