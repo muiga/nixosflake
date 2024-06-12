@@ -4,6 +4,7 @@ let
     upgrade-system = "sudo nixos-rebuild switch --flake ~/.nixfiles";
     upgrade-home = "home-manager switch --flake ~/.nixfiles";
     update-pkgs = "cd ~/.nixfiles && sudo nix flake update && cd";
+    upgrade = "cd ~/.nixfiles && sudo nix flake update && cd && home-manager switch --flake ~/.nixfiles && sudo nixos-rebuild switch --flake ~/.nixfiles";
     clean-home = "nix-collect-garbage -d";
     clean-system = "sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     psql-u ="sudo -u postgres psql";
