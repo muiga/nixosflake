@@ -73,19 +73,19 @@ in
     userEmail = "muigask@gmail.com";
   };
 
-   programs.ssh = {
-    enable = true;
-    extraConfig = ''
-      AddKeysToAgent yes
-      UseKeychain yes
-    '';
-  };
+  #  programs.ssh = {
+  #   enable = true;
+  #   extraConfig = ''
+  #     AddKeysToAgent yes
+  #     UseKeychain yes
+  #   '';
+  # };
 
-  services.ssh-agent = {
-    enable = true;
-    # enableSSHAskPass = true;
-    # identities = [ "/home/muiga/.ssh/id_ed25519_gh" ];
-  };
+  # services.ssh-agent = {
+  #   enable = true;
+  #   # enableSSHAskPass = true;
+  #   # identities = [ "/home/muiga/.ssh/id_ed25519_gh" ];
+  # };
 
   programs.zsh = {
     enable = true;
@@ -159,7 +159,31 @@ in
     # histSize = 10000;
     # histFile = "${config.xdg.dataHome}/zsh/history";    
   };
-  # Let Home Manager install and manage itself.
+
+
+  # xdg.configFile."environment.d/ssh_askpass.conf".text = ''
+  #   SSH_ASKPASS="${pkgs.ksshaskpass}/bin/ksshaskpass"
+  # '';
+  # xdg.configFile."autostart/ssh-add.desktop".text = ''
+  #   [Desktop Entry]
+  #   Exec=ssh-add -q
+  #   Name=ssh-add
+  #   Type=Application
+  # '';
+  # xdg.configFile."plasma-workspace/env/ssh-agent-startup.sh" = {
+  #   text = ''#!/bin/sh
+  #     [ -n "$SSH_AGENT_PID" ] || eval "$(ssh-agent -s)"
+  #     '';
+  #   executable = true;
+  # };
+  # xdg.configFile."plasma-workspace/shutdown/ssh-agent-shutdown.sh" = {
+  #   text = ''#!/bin/sh
+  #     [ -z "$SSH_AGENT_PID" ] || eval "$(ssh-agent -k)"
+  #     '';
+  #   executable = true;
+  # };
+
+     # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
