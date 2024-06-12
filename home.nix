@@ -73,6 +73,20 @@ in
     userEmail = "muigask@gmail.com";
   };
 
+   programs.ssh = {
+    enable = true;
+    extraConfig = ''
+      AddKeysToAgent yes
+      UseKeychain yes
+    '';
+  };
+
+  services.ssh-agent = {
+    enable = true;
+    # enableSSHAskPass = true;
+    # identities = [ "/home/muiga/.ssh/id_ed25519_gh" ];
+  };
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
