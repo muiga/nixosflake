@@ -81,11 +81,11 @@ in
   #   '';
   # };
 
-  # services.ssh-agent = {
-  #   enable = true;
-  #   # enableSSHAskPass = true;
-  #   # identities = [ "/home/muiga/.ssh/id_ed25519_gh" ];
-  # };
+  services.ssh-agent = {
+    enable = true;
+    # enableSSHAskPass = true;
+    # identities = [ "/home/muiga/.ssh/id_ed25519_gh" ];
+  };
 
   programs.zsh = {
     enable = true;
@@ -154,6 +154,11 @@ in
 
       # ---- Zoxide (better cd) ----
       eval "$(zoxide init zsh)"
+
+      if [ -z "$SSH_AUTH_SOCK" ]; then
+        eval "$(ssh-agent -s)"
+        ssh-add ~/.ssh/id_rsa
+      fi
 
     '';
     # histSize = 10000;
