@@ -339,6 +339,15 @@
       git
       oh-my-posh
       stow
+      fzf
+      zoxide
+      fzf-git-sh
+      eza
+      delta
+      bat
+      tldr
+      thefuck
+      fd
     ];
     shells = with pkgs; [
       zsh
