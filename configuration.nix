@@ -56,13 +56,13 @@
     bluetooth.enable = true;
     pulseaudio.enable = false;
         # hardware accelation
-    opengl = {
+    graphics = {
      enable = true;
      extraPackages = with pkgs; [  
       vaapiVdpau
       libvdpau-va-gl
      ];
-     driSupport32Bit = true;
+     enable32Bit = true;
     };
   };
 
@@ -150,7 +150,7 @@
     };
 
         #Auto-CPUFreq for power management on Laptops
-    auto-cpufreq.enable = true;
+    # auto-cpufreq.enable = true;
 
     # Enable the OpenSSH daemon.
     openssh = {                             # SSH: secure shell (remote connection to shell of server)
