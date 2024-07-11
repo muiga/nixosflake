@@ -149,8 +149,8 @@ in
         esac
       }
 
-      # thefuck alias
-      eval $(thefuck --alias fk)
+      # # thefuck alias
+      # eval $(thefuck --alias fk)
 
       # ---- Zoxide (better cd) ----
       eval "$(zoxide init zsh)"

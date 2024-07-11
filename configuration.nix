@@ -347,7 +347,7 @@
       delta
       bat
       tldr
-      thefuck
+      # thefuck
       fd
     ];
     shells = with pkgs; [
