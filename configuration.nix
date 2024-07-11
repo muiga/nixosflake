@@ -220,13 +220,13 @@
       motrix
       clipgrab
       ffmpeg
-      youtube-dl
+      yt-dlp
       epsonscan2
       libva
       libva-utils
       mpv
       smplayer
-      # filebot
+      filebot
       ngrok  
       anydesk
       mellowplayer
@@ -245,7 +245,6 @@
       appimage-run
       bruno
       vscode
-      # postman
       protonvpn-gui
       planify
       ticktick
@@ -325,6 +324,7 @@
       kdePackages.sddm-kcm
       kdePackages.kcolorpicker
       kdePackages.kasts
+      libsForQt5.polonium
       qt6.qtimageformats
       fwupd
       sbctl

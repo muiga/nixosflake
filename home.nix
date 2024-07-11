@@ -10,7 +10,7 @@ let
     psql-u ="sudo -u postgres psql";
     connect-ec2 = "ssh -i ~/.ssh/i-keys.pem ubuntu@ec2-3-76-209-240.eu-central-1.compute.amazonaws.com";
     connect-contabo-prod = "ssh root@144.91.119.192";
-    # connect-contabo-test = "ssh root@84.247.133.143";
+    connect-contabo-mine = "ssh root@45.159.222.167";
     # build-logs-app = "npm run build && git add . && git commit -m 'update' && git push && connect-contabo-prod sh update_logger.sh";
     ls = "eza --icons=always";
     cd = "z";
