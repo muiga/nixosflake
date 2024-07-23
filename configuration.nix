@@ -231,7 +231,7 @@
       anydesk
       mellowplayer
       tailscale
-      thunderbird
+      thunderbird-128
       qbittorrent
       shotcut
       clementine
@@ -262,7 +262,7 @@
 
 
   # Enable sound 
-  sound.enable = true;    
+  # sound.enable = true;    
   # security
   security.rtkit.enable = true;
   security.polkit.enable = true;
@@ -347,7 +347,7 @@
       delta
       bat
       tldr
-      # thefuck
+      # thefuckexit
       fd
     ];
     shells = with pkgs; [
