@@ -211,7 +211,7 @@
       htop
       gwenview
       ferdium
-      rambox
+      # rambox
       libreoffice-qt
       pdfarranger
       winbox
@@ -227,7 +227,7 @@
       mpv
       smplayer
       filebot
-      ngrok  
+      # ngrok  
       anydesk
       mellowplayer
       tailscale
@@ -324,7 +324,7 @@
       kdePackages.sddm-kcm
       kdePackages.kcolorpicker
       kdePackages.kasts
-      libsForQt5.polonium
+      # libsForQt5.polonium
       qt6.qtimageformats
       fwupd
       sbctl
@@ -353,6 +353,10 @@
     shells = with pkgs; [
       zsh
     ];
+    variables = {
+    GDK_SCALE = "1";          # Adjusts the scale factor (e.g., 2 for 200% scaling)
+    GDK_DPI_SCALE = "0.9";      # Adjusts DPI scaling (inverse of scale, e.g., 0.5 for 2x scaling)
+  };
   };
 
 
