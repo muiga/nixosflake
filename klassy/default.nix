@@ -1,63 +1,85 @@
-{ stdenv, lib, fetchFromGitHub, cmake,  gcc, 
-  xdg-utils, extra-cmake-modules, qt6, callPackage, wrapQtAppsHook }:
+{ mkDerivation
+, lib
+, fetchFromGitHub
+, cmake
+, extra-cmake-modules
+, kdecoration
+, plasma-workspace
+, qt6
+, frameworkintegration
+, kcmutils
+, kcolorscheme
+, kconfig
+, kcoreaddons
+, kguiaddons
+, ki18n
+, kiconthemes
+, kirigami
+, kwidgetsaddons
+, kwindowsystem
+, kcmutils5
+, frameworkintegration5
+, kconfigwidgets5
+, kiconthemes5
+, kirigami2
+, kwindowsystem5
+}:
 
-let
-  # Import the KDE Frameworks 5 (kf5) set
-  kf5 = callPackage <nixpkgs> {};
-  make = callPackage <nixpkgs> {};
-in
-
-stdenv.mkDerivation rec {
+mkDerivation rec {
   pname = "klassy";
-  version = "6.1.breeze6.0.3"; # Replace with the correct version
+  version = "6.1.breeze6.0.3";
 
   src = fetchFromGitHub {
     owner = "paulmcauley";
-    repo = pname;
+    repo = "klassy";
     rev = "${version}";
-    sha256 = "sha256-D8vjc8LT+pn6Qzn9cSRL/TihrLZN4Y+M3YiNLPrrREc=";  # Replace with the correct SHA256
+    sha256 = "0qkjzgjplgwczhk6959iah4ilvazpprv7yb809jy75kkp1jw8mwk";
   };
 
-  nativeBuildInputs = [ cmake extra-cmake-modules wrapQtAppsHook ];
   buildInputs = [
-    gcc
+    kdecoration
+    plasma-workspace
+    frameworkintegration
+    libgcc
+    glibc
+    kcmutils
+    kcolorscheme 
+    kconfig 
+    kcoreaddons 
+    kguiaddons 
+    ki18n 
+    kiconthemes 
+    kirigami 
+    kwidgetsaddons
+    kwindowsystem 
+    qt6.base
+    qt6.declarative 
+    qt6.svg
     xdg-utils
-
-    # Qt6 libraries
-    qt6.qtbase
-    qt6.qtdeclarative
-    qt6.qtsvg
-
-    # KDE Frameworks 5 libraries
-    # kf5.kcmutils
-    # kf5.kcolorscheme
-    # kf5.kconfig
-    # kf5.kcoreaddons
-    # kf5.kdecoration
-    # kf5.kguiaddons
-    # kf5.ki18n
-    # kf5.kiconthemes
-    # kf5.kirigami2
-    # kf5.kwidgetsaddons
-    # kf5.kwindowsystem
-    # kf5
+    extra-cmake-modules
+    kcmutils5
+    frameworkintegration5
+    kconfigwidgets5
+    kiconthemes5
+    kirigami2
+    kwindowsystem5
   ];
 
-  cmakeFlags = [
-    "-DCMAKE_INSTALL_PREFIX=$out"
-    "-DCMAKE_BUILD_TYPE=Release"
-    "-DBUILD_TESTING=OFF"
-    "-DKDE_INSTALL_USE_QT_SYS_PATHS=ON"
+  nativeBuildInputs = [
+    cmake
+    extra-cmake-modules
   ];
-
-  installPhase = ''
-    make install
-  '';
 
   meta = with lib; {
-    description = "Klassy C++ project";
-    homepage = "https://github.com/paulmcauley/${pname}";
-    license = licenses.mit;
-    platforms = platforms.linux;
+    description = "A fork of breeze theme style that aims to be visually modern and minimalistic";
+    homepage = "https://github.com/paulmcauley/klassy";
+    license = licenses.gpl2Plus;
+    maintainers = [ maintainers.paulmcauley ];
+    platforms = platforms.all;
   };
 }
+
+
+# sudo pacman -S cmake extra-cmake-modules kdecoration qt5-declarative qt5-x11extras
+
+# sudo pacman -S git frameworkintegration gcc-libs glibc kcmutils kcolorscheme kconfig kcoreaddons kdecoration kguiaddons ki18n kiconthemes kirigami kwidgetsaddons kwindowsystem qt6-base qt6-declarative qt6-svg xdg-utils extra-cmake-modules kcmutils5 frameworkintegration5 kconfigwidgets5 kiconthemes5 kirigami2 kwindowsystem5
