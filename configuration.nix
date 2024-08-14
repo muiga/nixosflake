@@ -211,7 +211,6 @@
       htop
       gwenview
       ferdium
-      # rambox
       libreoffice-qt
       pdfarranger
       winbox
@@ -227,7 +226,7 @@
       mpv
       smplayer
       filebot
-      # ngrok  
+      ngrok  
       anydesk
       mellowplayer
       tailscale
@@ -257,6 +256,7 @@
       slack
       spotube
       stremio
+      mailspring
     ];
   };
 
@@ -324,7 +324,7 @@
       kdePackages.sddm-kcm
       kdePackages.kcolorpicker
       kdePackages.kasts
-      # libsForQt5.polonium
+      kdePackages.sierra-breeze-enhanced
       qt6.qtimageformats
       fwupd
       sbctl
@@ -347,15 +347,15 @@
       delta
       bat
       tldr
-      # thefuckexit
+      thefuck
       fd
     ];
     shells = with pkgs; [
       zsh
     ];
     variables = {
-    GDK_SCALE = "1";          # Adjusts the scale factor (e.g., 2 for 200% scaling)
-    GDK_DPI_SCALE = "0.9";      # Adjusts DPI scaling (inverse of scale, e.g., 0.5 for 2x scaling)
+    GDK_SCALE = "1";          
+    GDK_DPI_SCALE = "0.8";      
   };
   };
 
@@ -363,7 +363,7 @@
   system = {
     # copySystemConfiguration = true;
     autoUpgrade.enable = true;
-    stateVersion = "24.05"; # Defines whether the base is based on the point releases or the unstable release
+    stateVersion = "24.05"; 
   };
 
 
@@ -371,13 +371,10 @@
   nixpkgs.config={
     allowUnfree = true;
     allowUnfreePredicate = (pkg: builtins.elem (builtins.parseDrvName pkg.name).name [ "steam" ]);
-    # permittedInsecurePackages = [
-    #   "freeimage-unstable-2021-11-01"
-    # ];
-   
+     
   };
 
-  nix = {                                   # Nix Package Manager settings
+  nix = {                                   
     settings ={
       # auto-optimise-store = true;           # Optimise syslinks
       experimental-features = ["nix-command" "flakes"];

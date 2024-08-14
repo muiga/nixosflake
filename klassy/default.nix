@@ -41,7 +41,7 @@ mkDerivation rec {
     plasma-workspace
     frameworkintegration
     libgcc
-    glibc
+    glibc 
     kcmutils
     kcolorscheme 
     kconfig 
