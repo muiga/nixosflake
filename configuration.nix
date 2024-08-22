@@ -166,6 +166,11 @@
     fwupd.enable = true;  
   };
 
+  #theming
+  catppuccin = {
+    flavor = "mocha";
+    enable = true;
+  };
 
    # zsh
   programs = {
@@ -206,7 +211,7 @@
       persepolis
       onedrive
       obs-studio
-      easyeffects
+      # easyeffects
       nodejs_20
       htop
       gwenview
@@ -226,7 +231,6 @@
       mpv
       smplayer
       filebot
-      ngrok  
       anydesk
       mellowplayer
       tailscale
@@ -344,7 +348,7 @@
       zoxide
       fzf-git-sh
       eza
-      delta
+      # delta
       bat
       tldr
       thefuck
