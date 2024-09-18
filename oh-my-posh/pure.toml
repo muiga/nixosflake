@@ -1,6 +1,8 @@
 "$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
 console_title_template = "{{if .Root}}(Admin){{end}} {{.PWD}}"
 version = 2
+final_space = true
+
 
 [palette]
 light-blue = "#CAF0F8"
