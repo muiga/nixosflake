@@ -7,6 +7,8 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
 [palette]
 light-blue = "#CAF0F8"
 azure = "#6CB4EE"
+gray = "#808080"
+
 
 [[blocks]]
   type = 'prompt'
@@ -26,7 +28,7 @@ azure = "#6CB4EE"
   [[blocks.segments]]
     type = 'git'
     style = 'plain'
-    foreground = 'grey'
+    foreground = 'p:gray'
     background = 'transparent'
     template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
 
