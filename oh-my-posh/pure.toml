@@ -75,7 +75,7 @@ type = "prompt"
       "{{if eq .Code 0}}magenta{{end}}",
     ]
   style = "plain"
-  template = "❯ "
+  template = "❯"
   type = "status"
 
     [blocks.segments.properties]
