@@ -96,7 +96,7 @@ in
     shellAliases = myAliases;
     initExtra = '' 
       export PATH=$PATH:${pkgs.oh-my-posh}/bin
-      eval "$(oh-my-posh init zsh --config ~/.nixfiles/oh-my-posh/zen.toml)"
+      eval "$(oh-my-posh init zsh --config ~/.nixfiles/oh-my-posh/pure.toml)"
       export PATH=$PATH:${pkgs.fzf}/bin
       eval "$(fzf --zsh)"
       # --- setup fzf theme ---

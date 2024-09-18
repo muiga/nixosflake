@@ -2,18 +2,27 @@
 console_title_template = "{{if .Root}}(Admin){{end}} {{.PWD}}"
 version = 2
 
+[palette]
+light-blue = "#CAF0F8"
+azure = "#6CB4EE"
+
+
 [[blocks]]
 alignment = "left"
 type = "prompt"
+newline = true
 
   [[blocks.segments]]
-  foreground = "#BF616A"
+   foreground_templates = [
+    "{{if gt .Code 0}}red{{end}}",
+    "{{if eq .Code 0}}magenta{{end}}",
+  ]
   style = "plain"
   template = "{{ .UserName }} "
   type = "session"
 
   [[blocks.segments]]
-  foreground = "#81A1C1"
+  foreground = 'p:azure'
   style = "plain"
   template = "{{ .Path }} "
   type = "path"
@@ -41,8 +50,8 @@ type = "prompt"
     github_icon = ""
 
 [[blocks]]
-alignment = "left"
-type = "prompt"
+  type = 'rprompt'
+  overflow = 'hidden'
 
   [[blocks.segments]]
   foreground = "#A3BE8C"
@@ -59,8 +68,10 @@ newline = true
 type = "prompt"
 
   [[blocks.segments]]
-  foreground = "#B48EAD"
-  foreground_templates = [ "{{ if gt .Code 0 }}#BF616A{{ end }}" ]
+  foreground_templates = [
+      "{{if gt .Code 0}}red{{end}}",
+      "{{if eq .Code 0}}magenta{{end}}",
+    ]
   style = "plain"
   template = "❯ "
   type = "status"
@@ -69,6 +80,14 @@ type = "prompt"
     always_enabled = true
 
 [transient_prompt]
-foreground = "#B48EAD"
-foreground_templates = [ "{{ if gt .Code 0 }}#BF616A{{ end }}" ]
-template = "❯ "
+  foreground_templates = [
+    "{{if gt .Code 0}}red{{end}}",
+    "{{if eq .Code 0}}magenta{{end}}",
+  ]
+  background = 'transparent'
+  template = '❯ '
+
+[secondary_prompt]
+  foreground = 'magenta'
+  background = 'transparent'
+  template = '❯❯ '
