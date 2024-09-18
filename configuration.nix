@@ -149,8 +149,7 @@
         configDir = "/home/muiga/Sync/.config/syncthing";   # Folder for Syncthing's settings and keys
     };
 
-        #Auto-CPUFreq for power management on Laptops
-    # auto-cpufreq.enable = true;
+
 
     # Enable the OpenSSH daemon.
     openssh = {                             # SSH: secure shell (remote connection to shell of server)
@@ -167,10 +166,10 @@
   };
 
   #theming
-  catppuccin = {
-    flavor = "mocha";
-    enable = true;
-  };
+  # catppuccin = {
+  #   # flavor = "mocha";
+  #   # enable = true;
+  # };
 
    # zsh
   programs = {
@@ -261,6 +260,7 @@
       spotube
       stremio
       mailspring
+      codeium
     ];
   };
 

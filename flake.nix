@@ -4,7 +4,7 @@
 
     inputs ={
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-        catppuccin.url = "github:catppuccin/nix";
+        # catppuccin.url = "github:catppuccin/nix";
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -15,7 +15,9 @@
     };
 
 
-    outputs ={self, nixpkgs,catppuccin, home-manager, 
+    outputs ={self, nixpkgs,
+    # catppuccin, 
+    home-manager, 
         #lanzaboote,
          ...
         }:
@@ -38,7 +40,7 @@
                     # your normal configuration here.
                    
                     # catppuccin theming
-                    catppuccin.nixosModules.catppuccin
+                    # catppuccin.nixosModules.catppuccin
 
 
                     # Lanzaboote for secure boot
@@ -67,7 +69,7 @@
                 inherit pkgs;
                 modules = [
                     ./home.nix
-                    catppuccin.homeManagerModules.catppuccin
+                    # catppuccin.homeManagerModules.catppuccin
                 ];
             };
         };
