@@ -329,6 +329,7 @@
       kdePackages.kcolorpicker
       kdePackages.kasts
       kdePackages.sierra-breeze-enhanced
+      kdePackages.filelight
       qt6.qtimageformats
       fwupd
       sbctl

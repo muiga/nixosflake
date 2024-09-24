@@ -11,10 +11,16 @@ let
     connect-ec2 = "ssh -i ~/.ssh/i-keys.pem ubuntu@ec2-3-76-209-240.eu-central-1.compute.amazonaws.com";
     connect-contabo-prod = "ssh root@144.91.119.192";
     connect-contabo-mine = "ssh root@45.159.222.167";
+    codium-ai = "sudo rm ~/.local/share/JetBrains/WebStorm2024.2/codeium/'$(basename $(readlink /nix/var/nix/profiles/system) | cut -d'-' -f1)'/language_server_linux_x64 && sudo ln -s '$(which codeium_language_server)' ~/.local/share/JetBrains/WebStorm2024.2/codeium/'$(basename $(readlink /nix/var/nix/profiles/system) | cut -d'-' -f1)'/language_server_linux_x64";
     # build-logs-app = "npm run build && git add . && git commit -m 'update' && git push && connect-contabo-prod sh update_logger.sh";
     ls = "eza --icons=always";
     cd = "z";
   };
+
+  #codium-ai="sudo rm ~/.local/share/JetBrains/WebStorm2024.2/codeium/$CURRENT_GEN_HASH/language_server_linux_x64 && sudo ln -s '$(which codeium_language_server)' ~/.local/share/JetBrains/WebStorm2024.2/codeium/$CURRENT_GEN_HASH/language_server_linux_x64"
+  #WEBSTORM_VERSION=$(nix-store --query --requisites $(which webstorm) | grep webstorm | sed -n 's/.*webstorm-\([0-9]*\.[0-9]*\).*/WebStorm\1/p')
+  # export CURRENT_GEN_HASH=$(basename $(readlink /nix/var/nix/profiles/system) | cut -d'-' -f1)   
+
 
 
     # Define your color variables
