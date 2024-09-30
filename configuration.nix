@@ -261,6 +261,7 @@
       stremio
       mailspring
       codeium
+      dprint
     ];
   };
 
