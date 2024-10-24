@@ -8,6 +8,9 @@
       ./hardware-configuration.nix
     ];
 
+  # overlay
+  nixpkgs.overlays = [ (self: super: { utillinux = super.util-linux; })];
+
   # Bootloader.
   boot ={
     kernelPackages = pkgs.linuxPackages_latest;
@@ -243,7 +246,6 @@
       microsoft-edge
       spotify
       telegram-desktop
-      bitwarden
       appimage-run
       bruno
       vscode
@@ -262,6 +264,8 @@
       mailspring
       codeium
       dprint
+      google-chrome
+      jq
     ];
   };
 
@@ -331,6 +335,7 @@
       kdePackages.kasts
       kdePackages.sierra-breeze-enhanced
       kdePackages.filelight
+      kdePackages.krohnkite
       qt6.qtimageformats
       fwupd
       sbctl
