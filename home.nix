@@ -12,7 +12,7 @@ let
     connect-contabo-prod = "ssh root@144.91.119.192";
     connect-contabo-mine = "ssh root@45.159.222.167";
     codium-ai = "sh ~/.nixfiles/codeium.sh";
-    webstorm. = "nohup webstorm & disown";
+    wtm = "nohup webstorm & disown";
     # build-logs-app = "npm run build && git add . && git commit -m 'update' && git push && connect-contabo-prod sh update_logger.sh";
     ls = "eza --icons=always";
     cd = "z";
