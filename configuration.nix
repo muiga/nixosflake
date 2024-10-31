@@ -2,7 +2,7 @@
 
 let
   # Fetch the hostname and construct the path
-  hostname = builtins.getEnv "HOSTNAME" or "thinkbook";
+  hostname = builtins.getEnv "HOSTNAME" or "thinkbook1";
   pcsConfigPath = "../${hostname}/configuration.nix";
 in
 
