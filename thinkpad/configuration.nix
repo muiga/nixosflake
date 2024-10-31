@@ -38,7 +38,7 @@
 
 # Networking
   networking ={
-    hostName = "nixos"; # Define your hostname.
+    hostName = "thinkpad"; # Define your hostname.
       # Enable networking
     networkmanager.enable = true;
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
@@ -60,7 +60,7 @@
   hardware ={
     bluetooth.enable = true;
     pulseaudio.enable = false;
-    # hardware accelation
+        # hardware accelation
     graphics = {
      enable = true;
      extraPackages = with pkgs; [  
@@ -72,6 +72,7 @@
 
     # New ThinkPads have a different TrackPoint manufacturer/name.
     trackpoint.device = "TPPS/2 Elan TrackPoint";
+	
 
     nvidia = {
 
@@ -142,9 +143,9 @@
 
       # Set the right DPI. xdpyinfo says the screen is 677x423 mm but
       # it actually is 344×215 mm.
-      monitorSection = lib.mkDefault ''
-      DisplaySize 344 215
-      '';      
+       #monitorSection = lib.mkDefault ''
+      # DisplaySize 344 215
+      # '';      
     };
 
     # postgresql
@@ -275,7 +276,7 @@
       pdfarranger
       winbox
       todoist-electron
-      megasync
+      #megasync
       motrix
       clipgrab
       ffmpeg
@@ -388,7 +389,7 @@
       kdePackages.kasts
       kdePackages.sierra-breeze-enhanced
       kdePackages.filelight
-      kdePackages.krohnkite
+      #kdePackages.krohnkite
       qt6.qtimageformats
       fwupd
       sbctl

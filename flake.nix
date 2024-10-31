@@ -29,7 +29,7 @@
 
         # NixOS configuration entrypoint
         nixosConfigurations = {
-            nixos= lib.nixosSystem {
+            thinkpad= lib.nixosSystem {
                 inherit system;
                 modules = [                    
                     # main config file
