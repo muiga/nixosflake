@@ -32,7 +32,7 @@
                 inherit system;
                 modules = [                    
                     # main config file
-                    ./configuration.nix
+                    ./thinkpad/configuration.nix
                     # This is not a complete NixOS configuration and you need to reference
                     # your normal configuration here.
                  
