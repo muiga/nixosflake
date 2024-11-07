@@ -25,7 +25,6 @@
         lib = nixpkgs.lib;      
         pkgs = nixpkgs.legacyPackages.${system};       
     in {
-   
 
         # NixOS configuration entrypoint
         nixosConfigurations = {

@@ -276,7 +276,7 @@
       pdfarranger
       winbox
       todoist-electron
-      #megasync
+      megasync
       motrix
       clipgrab
       ffmpeg
@@ -389,7 +389,7 @@
       kdePackages.kasts
       kdePackages.sierra-breeze-enhanced
       kdePackages.filelight
-      #kdePackages.krohnkite
+      kdePackages.krohnkite
       qt6.qtimageformats
       fwupd
       sbctl
@@ -409,7 +409,7 @@
       zoxide
       fzf-git-sh
       eza
-      # delta
+      delta
       bat
       tldr
       thefuck
@@ -420,7 +420,7 @@
     ];
     variables = {
     GDK_SCALE = "1";          
-    GDK_DPI_SCALE = "0.8";      
+    GDK_DPI_SCALE = "0.8";
   };
   };
 
