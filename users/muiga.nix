@@ -80,6 +80,6 @@
     users.muiga = {
       imports = [../base/home.nix];
     };
-    useUserPackages = true;
+#    useUserPackages = true;
   };
 }

@@ -1,17 +1,14 @@
 { pkgs, ... }:
 let
   myAliases ={
-    upgrade-system = "sudo nixos-rebuild switch";
-    upgrade-home = "home-manager switch";
-    update-pkgs = "sudo nix flake update";
-    upgrade = "sudo nix flake update && home-manager switch && sudo nixos-rebuild switch";
+    upgrade = "sudo nixos-rebuild switch";
     clean-home = "nix-collect-garbage -d";
     clean-system = "sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     psql-u ="sudo -u postgres psql";
     connect-ec2 = "ssh -i ~/.ssh/i-keys.pem ubuntu@ec2-3-76-209-240.eu-central-1.compute.amazonaws.com";
     connect-contabo-prod = "ssh root@144.91.119.192";
     connect-contabo-mine = "ssh root@45.159.222.167";
-    codium-ai = "sh ~/.nixfiles/codeium.sh";
+    codium-ai = "sh /etc/nixos/codeium.sh";
     wtm = "nohup webstorm & disown";
     # build-logs-app = "npm run build && git add . && git commit -m 'update' && git push && connect-contabo-prod sh update_logger.sh";
     ls = "eza --icons=always";
