@@ -1,10 +1,10 @@
 { pkgs, ... }:
 let
   myAliases ={
-    upgrade-system = "sudo nixos-rebuild switch --flake ~/.nixfiles";
-    upgrade-home = "home-manager switch --flake ~/.nixfiles";
-    update-pkgs = "cd ~/.nixfiles && sudo nix flake update && cd";
-    upgrade = "cd ~/.nixfiles && sudo nix flake update && cd && home-manager switch --flake ~/.nixfiles && sudo nixos-rebuild switch --flake ~/.nixfiles";
+    upgrade-system = "sudo nixos-rebuild switch";
+    upgrade-home = "home-manager switch";
+    update-pkgs = "sudo nix flake update";
+    upgrade = "sudo nix flake update && home-manager switch && sudo nixos-rebuild switch";
     clean-home = "nix-collect-garbage -d";
     clean-system = "sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     psql-u ="sudo -u postgres psql";
@@ -31,8 +31,8 @@ in
 
   home.username = "muiga";
   home.homeDirectory = "/home/muiga";
-    # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  # Allow unfree packages
+  #      nixpkgs.config.allowUnfree = true;
   # The home.packages option allows you to install Nix packages into your
   # environment.
   #  home.packages = with pkgs; [
@@ -96,7 +96,7 @@ in
     shellAliases = myAliases;
     initExtra = ''
       export PATH=$PATH:${pkgs.oh-my-posh}/bin
-      eval "$(oh-my-posh init zsh --config ~/.nixfiles/oh-my-posh/pure.toml)"
+      eval "$(oh-my-posh init zsh --config /etc/nixos/oh-my-posh/pure.toml)"
       export PATH=$PATH:${pkgs.fzf}/bin
       eval "$(fzf --zsh)"
       # --- setup fzf theme ---
@@ -167,7 +167,6 @@ in
 
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
