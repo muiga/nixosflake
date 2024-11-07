@@ -5,10 +5,6 @@
 
 {
 
- imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
-     
  # Hardware services such as Bluetooth and Sound
   hardware ={
     # New ThinkPads have a different TrackPoint manufacturer/name.
@@ -115,6 +111,8 @@
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
   #networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
+  # enable proprietary firmware
+  hardware.enableRedistributableFirmware = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
