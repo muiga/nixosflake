@@ -79,10 +79,16 @@
 
         # Standalone home-manager configuration entrypoint
         homeConfigurations = {
-             muiga= home-manager.lib.homeManagerConfiguration {
+             "muiga@thinkpad"= home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
                 modules = [
-                    ./home.nix                  
+                    ./thinkpad/home.nix
+                ];
+            };
+            "muiga@thinkbook"= home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                modules = [
+                    ./thinkbook/home.nix
                 ];
             };
         };
