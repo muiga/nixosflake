@@ -8,12 +8,12 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        #lanzaboote.url ="github:nix-community/lanzaboote/v0.3.0";
-        #lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
+        lanzaboote.url ="github:nix-community/lanzaboote/v0.4.1";
+        lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
     };
 
 
-   outputs = { self, nixpkgs, home-manager }@inputs:
+   outputs = { self, nixpkgs,lanzaboote, home-manager }@inputs:
     let
         system = "x86_64-linux";     
         specialArgs = inputs // { inherit system; };
@@ -37,24 +37,21 @@
                 [
                     # main config file
                     ./thinkpad/configuration.nix
-                    # This is not a complete NixOS configuration and you need to reference
-                    # your normal configuration here.
-                 
-                    # Lanzaboote for secure boot
-                    #lanzaboote.nixosModules.lanzaboote
-                   #({ pkgs, lib, ... }: {
-                        # Lanzaboote currently replaces the systemd-boot module.
-                        # This setting is usually set to true in configuration.nix
-                        # generated at installation time. So we force it to false
-                        # for now.
-                       # boot.loader.systemd-boot.enable = lib.mkForce false;
-                       # boot.lanzaboote = {
-                        #    enable = true;
-                        #    pkiBundle = "/etc/secureboot";
-                        #    configurationLimit = 5;
 
-                       #};
-                   #})
+                    # Lanzaboote for secure boot
+                    lanzaboote.nixosModules.lanzaboote
+                   ({ pkgs, lib, ... }: {
+                        #environment.systemPackages = [
+                          # For debugging and troubleshooting Secure Boot.
+                          #pkgs.sbctl
+                        #];
+                        boot.loader.systemd-boot.enable = lib.mkForce false;
+                        boot.lanzaboote = {
+                            enable = true;
+                            pkiBundle = "/etc/secureboot";
+                            configurationLimit = 5;
+                       };
+                   })
                 ];
             };
             thinkbook= nixpkgs.lib.nixosSystem {

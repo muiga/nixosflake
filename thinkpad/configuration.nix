@@ -3,6 +3,7 @@
     [
       ../base/config.nix
       ./hardware.nix
+
     ];
 
   # Networking
