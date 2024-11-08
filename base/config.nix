@@ -278,6 +278,7 @@
       tldr
       thefuck
       fd
+      efibootmgr
     ];
     shells = with pkgs; [
       zsh
