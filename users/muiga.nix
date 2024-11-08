@@ -56,7 +56,7 @@
       telegram-desktop
       appimage-run
       bruno
-      vscode
+      vscode.fhs
       protonvpn-gui
       planify
       ticktick
