@@ -1,7 +1,8 @@
 { pkgs, ... }:
 let
   myAliases ={
-    upgrade = "sudo nixos-rebuild switch";
+    upgrade = "cd /etc/nixos && sudo nix flake update && cd && sudo nixos-rebuild switch";
+    update="cd /etc/nixos && sudo nix flake update && cd";
     clean-home = "nix-collect-garbage -d";
     clean-system = "sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     psql-u ="sudo -u postgres psql";
