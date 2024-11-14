@@ -92,6 +92,10 @@
       fileSystems = [ "/" ];
     };
 
+    fprintd = {
+      enable = true;
+    };
+
     # postgresql
     postgresql = {
       enable = true;
@@ -287,7 +291,8 @@
       efibootmgr
       zsh-powerlevel10k
       usbutils
-      open-fprintd
+      fprintd
+      libfprint
       firefox
       kate
       vlc
@@ -323,7 +328,7 @@
       anydesk
       mellowplayer
       tailscale
-      thunderbird-128
+      thunderbird-latest
       qbittorrent
       shotcut
       clementine
