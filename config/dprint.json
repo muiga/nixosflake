@@ -1,0 +1,5 @@
+{
+  "extends": [
+    "https://raw.githubusercontent.com/m-pot/lint/refs/heads/master/dprint.json"
+  ]
+}

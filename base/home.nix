@@ -47,6 +47,13 @@ in
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    ".config/dprint/dprint.json".text = ''
+      {
+        "extends": [
+          "https://raw.githubusercontent.com/m-pot/lint/refs/heads/master/dprint.json"
+        ]
+      }
+    '';
   };
 
   # You can also manage environment variables but you will have to manually
@@ -82,6 +89,8 @@ in
     # enableSSHAskPass = true;
     # identities = [ "/home/muiga/.ssh/id_ed25519_gh" ];
   };
+
+
 
   programs.zsh = {
     enable = true;
