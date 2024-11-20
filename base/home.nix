@@ -52,7 +52,7 @@ in
     ".config/dprint/dprint.json".text = ''
       {
         "extends": [
-          "https://raw.githubusercontent.com/m-pot/lint/refs/heads/master/dprint.json"
+          "https://raw.githubusercontent.com/muiga/ts-linting/refs/heads/master/dprint.json?token=GHSAT0AAAAAAC2LIONYFU5ZJZLXFKGCCA3UZZ5UYQA"
         ]
       }
     '';
