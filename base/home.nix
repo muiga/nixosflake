@@ -11,6 +11,7 @@ let
     connect-contabo-mine = "ssh root@45.159.222.167";
     codium-ai = "sh /etc/nixos/codeium.sh";
     wtm = "nohup webstorm & disown";
+    dprint-config = "cat $DPRINT_CONFIG > dprint.json";
     # build-logs-app = "npm run build && git add . && git commit -m 'update' && git push && connect-contabo-prod sh update_logger.sh";
     ls = "eza --icons=always";
     cd = "z";
@@ -31,8 +32,9 @@ in
   #      nixpkgs.config.allowUnfree = true;
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  #  home.packages = with pkgs; [
-  #  ];
+   home.packages = with pkgs; [
+    dprint
+   ];
 
   # Home Manager is pretty good at managing nixfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -67,7 +69,8 @@ in
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    # EDITOR = "emacs";    
+    DPRINT_CONFIG = ".config/dprint/dprint.json"; 
   };
 
   programs.git = {
@@ -76,13 +79,6 @@ in
     userEmail = "muigask@gmail.com";
   };
 
-  #  programs.ssh = {
-  #   enable = true;
-  #   extraConfig = ''
-  #     AddKeysToAgent yes
-  #     UseKeychain yes
-  #   '';
-  # };
 
   services.ssh-agent = {
     enable = true;
@@ -90,16 +86,15 @@ in
     # identities = [ "/home/muiga/.ssh/id_ed25519_gh" ];
   };
 
-
-
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
     dotDir = ".config/zsh";
-    shellAliases = myAliases;
+    shellAliases = myAliases;   
     initExtra = ''
+      export DPRINT_CONFIG=~/.config/dprint/dprint.json
       export PATH=$PATH:${pkgs.oh-my-posh}/bin
       eval "$(oh-my-posh init zsh --config /etc/nixos/oh-my-posh/pure.toml)"
       export PATH=$PATH:${pkgs.fzf}/bin

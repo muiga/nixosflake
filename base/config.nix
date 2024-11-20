@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs,config, ... }:
 
 {
  imports =
@@ -355,7 +355,6 @@
       stremio
       mailspring
       codeium
-      dprint
       google-chrome
       jq
     ];
