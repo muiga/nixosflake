@@ -12,7 +12,7 @@ let
     codium-ai = "sh /etc/nixos/codeium.sh";
     wtm = "nohup webstorm & disown";
     dprintc = "cat $DPRINT_CONFIG > dprint.json";
-    lint-setup ="source <(curl -fsSL https://raw.githubusercontent.com/muiga/ts-linting/refs/heads/master/setup.sh?token=GHSAT0AAAAAAC2LIONZUXZOR4JGHO2GP2SYZZ5VWOQ)";
+    lint-setup ="source <(curl -fsSL https://raw.githubusercontent.com/muiga/ts-linting/refs/heads/master/setup.sh)";
     # build-logs-app = "npm run build && git add . && git commit -m 'update' && git push && connect-contabo-prod sh update_logger.sh";
     ls = "eza --icons=always";
     cd = "z";
@@ -53,7 +53,7 @@ in
     ".config/dprint/dprint.json".text = ''
       {
         "extends": [
-          "https://raw.githubusercontent.com/muiga/ts-linting/refs/heads/master/dprint.json?token=GHSAT0AAAAAAC2LIONYFU5ZJZLXFKGCCA3UZZ5UYQA"
+          "https://raw.githubusercontent.com/muiga/ts-linting/refs/heads/master/dprint.json"
         ]
       }
     '';
