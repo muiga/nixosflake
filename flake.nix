@@ -10,13 +10,17 @@
         };
         lanzaboote.url ="github:nix-community/lanzaboote/v0.4.1";
         lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
+        nixpkgs-unfree = {
+            url = "github:numtide/nixpkgs-unfree";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
 
-   outputs = { self, nixpkgs,lanzaboote, home-manager }@inputs:
+   outputs = { self, nixpkgs,lanzaboote, home-manager, ... }@inputs:
     let
         system = "x86_64-linux";     
-        specialArgs = inputs // { inherit system; };
+        specialArgs = { inherit inputs system; };
         shared-modules = [
             home-manager.nixosModules.home-manager
             {
@@ -36,7 +40,14 @@
                 modules = shared-modules ++
                 [
                     # main config file
-                    ./thinkpad/configuration.nix
+                    # ./thinkpad/configuration.nix
+
+                    # Pass `inputs` to configuration.nix
+                    ({ pkgs, inputs, ... }: {
+                    imports = [
+                        ./thinkpad/configuration.nix
+                    ];
+                    })
 
                     # Lanzaboote for secure boot
                     lanzaboote.nixosModules.lanzaboote

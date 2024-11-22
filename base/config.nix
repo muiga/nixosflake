@@ -11,7 +11,7 @@
 
   # Bootloader.
   boot ={
-    kernelPackages = pkgs.linuxPackages_latest;
+          
     loader = {
       systemd-boot = {
         enable =true;
@@ -23,6 +23,7 @@
      # Reduce swappiness
     kernel.sysctl = { "swappiness" = 10;};
   };
+
   # timeout service stop
   systemd.extraConfig = ''
     DefaultTimeoutStopSec=5s
@@ -305,7 +306,7 @@
       persepolis
       onedrive
       obs-studio
-      # easyeffects
+      easyeffects
       nodejs_20
       htop
       gwenview

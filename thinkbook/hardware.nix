@@ -4,6 +4,7 @@
 { config, lib, modulesPath, ... }:
 
 {
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   # Video drivers
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
