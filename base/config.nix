@@ -50,11 +50,8 @@
     };
   };
 
-  systemd.services.cloudflare-warp = {
-    enable = true;
-    description = "Cloudflare Warp Client";
-    wantedBy = [ "multi-user.target" ];
-  };
+  systemd.packages = [ pkgs.cloudflare-warp ]; # for warp-cli
+  systemd.targets.multi-user.wants = [ "warp-svc.service" ]; # causes warp-svc to be started automatically
 
   # Hardware services such as Bluetooth and Sound
   hardware ={
@@ -359,6 +356,7 @@
       jq
       ngrok
       cloudflare-warp
+      cloudflared
     ];
     shells = with pkgs; [
       zsh
