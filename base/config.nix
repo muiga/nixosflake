@@ -50,11 +50,11 @@
     };
   };
 
-  systemd.services.cloudflare-warp = {
-    enable = true;
-    description = "Cloudflare Warp Client";
-    wantedBy = [ "multi-user.target" ];
-  };
+  # systemd.services.cloudflare-warp = {
+  #   enable = true;
+  #   description = "Cloudflare Warp Client";
+  #   wantedBy = [ "multi-user.target" ];
+  # };
 
   # Hardware services such as Bluetooth and Sound
   hardware ={
