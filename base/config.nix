@@ -35,6 +35,7 @@
     # Enable networking
     networkmanager.enable = true;
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
+    wireguard.enable = true;
     firewall = {
       enable = true;
       allowedTCPPorts = [80 443 ];
@@ -47,6 +48,12 @@
         { from = 1714; to = 25000; } # 1714 to 1716 for KDE Connect and 22000 to 21027 for Syncthing
       ];
     };
+  };
+
+  systemd.services.cloudflare-warp = {
+    enable = true;
+    description = "Cloudflare Warp Client";
+    wantedBy = [ "multi-user.target" ];
   };
 
   # Hardware services such as Bluetooth and Sound
@@ -219,11 +226,7 @@
     #   host.enable = true;
     # };
   };
-
-  #
-
-
-  #Fonts
+ 
   fonts.packages = with pkgs; [
     inter
     carlito
@@ -236,11 +239,7 @@
     roboto
     roboto-mono
     roboto-serif
-    (nerdfonts.override {
-      fonts = [
-        "FiraCode"
-      ];
-    })
+    
   ];
 
   fonts.fontconfig = {
@@ -358,13 +357,15 @@
       codeium
       google-chrome
       jq
+      ngrok
+      # cloudflare-warp
     ];
     shells = with pkgs; [
       zsh
     ];
     variables = {
-    GDK_SCALE = "1";
-    GDK_DPI_SCALE = "0.8";
+    # GDK_SCALE = "1";
+    # GDK_DPI_SCALE = "0.8";
   };
   };
 

@@ -27,6 +27,7 @@
               home-manager = {
                 useUserPackages = true;
                 extraSpecialArgs = specialArgs;
+                backupFileExtension = "backup";
               };
             }
         ];
