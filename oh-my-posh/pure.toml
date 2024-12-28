@@ -1,95 +1,90 @@
-"$schema" = "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json"
-console_title_template = "{{if .Root}}(Admin){{end}} {{.PWD}}"
-version = 2
+console_title_template = '{{if .Root}}(Admin){{end}} {{.PWD}}'
+version = 3
 final_space = true
 
-
 [palette]
-light-blue = "#CAF0F8"
-azure = "#6CB4EE"
+  azure = '#6CB4EE'
+  light-blue = '#CAF0F8'
 
+[secondary_prompt]
+  template = '❯❯ '
+  foreground = 'magenta'
+  background = 'transparent'
 
-[[blocks]]
-alignment = "left"
-type = "prompt"
-newline = true
-
-  [[blocks.segments]]
-   foreground_templates = [
-    "{{if gt .Code 0}}red{{end}}",
-    "{{if eq .Code 0}}magenta{{end}}",
-  ]
-  style = "plain"
-  template = "{{ .UserName }} "
-  type = "session"
-
-  [[blocks.segments]]
-  foreground = 'p:azure'
-  style = "plain"
-  template = "{{ .Path }} "
-  type = "path"
-
-    [blocks.segments.properties]
-    style = "full"
+[transient_prompt]
+  template = '❯ '
+  background = 'transparent'
+  foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
 
 [[blocks]]
-alignment = "left"
-type = "prompt"
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
 
   [[blocks.segments]]
-  foreground = "#6C6C6C"
-  style = "plain"
-  template = "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}<#FFAFD7>*</>{{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} "
-  type = "git"
+    template = '{{ .UserName }} '
+    type = 'session'
+    style = 'plain'
+    foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
 
     [blocks.segments.properties]
-    branch_ahead_icon = "<#88C0D0>⇡ </>"
-    branch_behind_icon = "<#88C0D0>⇣ </>"
-    branch_icon = ""
-    fetch_stash_count = true
-    fetch_status = true
-    fetch_upstream_icon = true
-    github_icon = ""
+      cache_duration = 'none'
+
+  [[blocks.segments]]
+    template = '{{ .Path }} '
+    foreground = 'p:azure'
+    type = 'path'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
+      style = 'full'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    template = '{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}<#FFAFD7>*</>{{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
+    foreground = '#6C6C6C'
+    type = 'git'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      branch_ahead_icon = '<#88C0D0>⇡ </>'
+      branch_behind_icon = '<#88C0D0>⇣ </>'
+      branch_icon = ''
+      cache_duration = 'none'
+      fetch_stash_count = true
+      fetch_status = true
+      fetch_upstream_icon = true
+      github_icon = ''
 
 [[blocks]]
   type = 'rprompt'
   overflow = 'hidden'
 
   [[blocks.segments]]
-  foreground = "#A3BE8C"
-  style = "plain"
-  template = " {{ .FormattedMs }} "
-  type = "executiontime"
+    template = ' {{ .FormattedMs }} '
+    foreground = '#A3BE8C'
+    type = 'executiontime'
+    style = 'plain'
 
     [blocks.segments.properties]
-    style = "austin"
+      cache_duration = 'none'
+      style = 'austin'
 
 [[blocks]]
-alignment = "left"
-newline = true
-type = "prompt"
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
 
   [[blocks.segments]]
-  foreground_templates = [
-      "{{if gt .Code 0}}red{{end}}",
-      "{{if eq .Code 0}}magenta{{end}}",
-    ]
-  style = "plain"
-  template = "❯"
-  type = "status"
+    template = '❯'
+    type = 'status'
+    style = 'plain'
+    foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
 
     [blocks.segments.properties]
-    always_enabled = true
-
-[transient_prompt]
-  foreground_templates = [
-    "{{if gt .Code 0}}red{{end}}",
-    "{{if eq .Code 0}}magenta{{end}}",
-  ]
-  background = 'transparent'
-  template = '❯ '
-
-[secondary_prompt]
-  foreground = 'magenta'
-  background = 'transparent'
-  template = '❯❯ '
+      always_enabled = true
+      cache_duration = 'none'

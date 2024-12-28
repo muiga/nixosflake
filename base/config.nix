@@ -211,7 +211,7 @@
 
 
 
-  # virtualisation.docker.enable = true;
+
   # users.extraGroups.vboxusers.members = [ "user-with-access-to-virtualbox" ];
   virtualisation = {
     podman = {
@@ -222,6 +222,10 @@
     # virtualbox = {
     #   host.enable = true;
     # };
+    docker = {
+      enable = true;
+      autoPrune.enable = true;
+    };
   };
  
   fonts.packages = with pkgs; [
@@ -357,6 +361,7 @@
       ngrok
       cloudflare-warp
       cloudflared
+      docker-compose
     ];
     shells = with pkgs; [
       zsh
