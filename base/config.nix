@@ -216,7 +216,7 @@
   virtualisation = {
     podman = {
       enable = true;
-      dockerCompat = true;
+      # dockerCompat = true;
       defaultNetwork.settings.dns_enabled = true;
     };
     # virtualbox = {
@@ -240,13 +240,13 @@
     roboto
     roboto-mono
     roboto-serif
-    
+    ibm-plex
   ];
 
   fonts.fontconfig = {
       enable = true;
       defaultFonts = {
-      monospace = [ "JetBrainsMono Nerd Font Mono" ];
+      monospace = [ "JetBrainsMono Nerd Font Mono" "IBM Plex Mono" ];
 	    serif = [ "Roboto Serif" "Inter" ];
 	    sansSerif = [ "Roboto" "Inter"];
       };
@@ -290,11 +290,9 @@
       thefuck
       fd
       efibootmgr
-      zsh-powerlevel10k
       usbutils
       fprintd
       libfprint
-      firefox
       kate
       vlc
       brave
@@ -302,11 +300,8 @@
       insomnia
       haruna
       discord
-      motrix
-      persepolis
-      onedrive
+      motrix          
       obs-studio
-      easyeffects
       nodejs_20
       htop
       gwenview
@@ -314,7 +309,6 @@
       libreoffice-qt
       pdfarranger
       winbox
-      todoist-electron
       megasync
       motrix
       clipgrab
@@ -327,23 +321,17 @@
       smplayer
       filebot
       anydesk
-      mellowplayer
       tailscale
-      thunderbird-latest
       qbittorrent
-      shotcut
       clementine
       arduino
       sleuthkit
       bottom
-      microsoft-edge
       spotify
-      telegram-desktop
       appimage-run
       bruno
       vscode.fhs
       protonvpn-gui
-      planify
       ticktick
       joplin-desktop
       jetbrains.webstorm
@@ -352,7 +340,6 @@
       super-productivity
       nodePackages.prettier
       slack
-      spotube
       stremio
       mailspring
       codeium
