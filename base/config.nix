@@ -175,11 +175,7 @@
     fwupd.enable = true;
   };
 
-  #theming
-  # catppuccin = {
-  #   # flavor = "mocha";
-  #   # enable = true;
-  # };
+
 
    # zsh
   programs = {
@@ -272,7 +268,6 @@
       android-tools
       polkit
       syncthing
-      syncthing-tray
       neofetch
       gitRepo
       wget
