@@ -72,9 +72,14 @@
                 modules = shared-modules ++
                 [
                     # main config file
-                    ./thinkbook/configuration.nix
+                    # ./thinkbook/configuration.nix
                     # This is not a complete NixOS configuration and you need to reference
                     # your normal configuration here.
+                      ({ pkgs, inputs, ... }: {
+                    imports = [
+                        ./thinkbook/configuration.nix
+                    ];
+                    })
 
                     # Lanzaboote for secure boot
                     #lanzaboote.nixosModules.lanzaboote
