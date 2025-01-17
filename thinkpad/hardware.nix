@@ -88,55 +88,7 @@
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-
-  boot.initrd.luks.devices = {
-      root = {
-        device = "/dev/disk/by-uuid/68812758-1445-4d08-ae7c-d22260c08d59";
-        preLVM = true;
-        allowDiscards=true;
-      };
-  };
-
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e8edf960-cf07-4bf2-bc92-8f048d1cbc07";
-      fsType = "btrfs";
-      options = [ "subvol=root" ];
-    };
-
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/e8edf960-cf07-4bf2-bc92-8f048d1cbc07";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
-    };
-
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/e8edf960-cf07-4bf2-bc92-8f048d1cbc07";
-      fsType = "btrfs";
-      options = [ "subvol=nix" ];
-    };
-
-  fileSystems."/persist" =
-    { device = "/dev/disk/by-uuid/e8edf960-cf07-4bf2-bc92-8f048d1cbc07";
-      fsType = "btrfs";
-      options = [ "subvol=persist" ];
-    };
-
-  fileSystems."/var/log" =
-    { device = "/dev/disk/by-uuid/e8edf960-cf07-4bf2-bc92-8f048d1cbc07";
-      fsType = "btrfs";
-      options = [ "subvol=log" ];
-    };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E737-FDCC";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
-
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/6ecba474-76be-48f1-9190-8f43dfa39619"; }
-    ];
-
+  
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction

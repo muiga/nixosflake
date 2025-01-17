@@ -14,15 +14,20 @@
             url = "github:numtide/nixpkgs-unfree";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        disko={
+            url = "github:nix-community/disko";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
 
-   outputs = { self, nixpkgs,lanzaboote, home-manager, ... }@inputs:
+   outputs = { self, nixpkgs,lanzaboote,disko, home-manager, ... }@inputs:
     let
         system = "x86_64-linux";     
         specialArgs = { inherit inputs system; };
         shared-modules = [
             home-manager.nixosModules.home-manager
+            inputs.disko.nixosModules.disko
             {
               home-manager = {
                 useUserPackages = true;

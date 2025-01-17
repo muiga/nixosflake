@@ -3,7 +3,7 @@
     [
       ../base/config.nix
       ./hardware.nix
-
+      ./disko.nix
     ];
 
   # Networking
