@@ -288,22 +288,21 @@
       fprintd
       libfprint
       kate
-      vlc
-      brave
-      inkscape-with-extensions
-      insomnia
-      haruna
-      motrix          
-      obs-studio
+      # vlc
+      # brave
+      # inkscape-with-extensions
+      # insomnia
+      # haruna
+      # motrix          
+      # obs-studio
       nodejs_20
       htop
-      gwenview
-      ferdium
-      libreoffice-qt
+      # gwenview
+      # ferdium
+      # libreoffice-qt
       pdfarranger
-      winbox
-      megasync
-      motrix
+      # winbox
+      # megasync
       clipgrab
       ffmpeg
       yt-dlp
@@ -311,33 +310,33 @@
       libva
       libva-utils
       mpv
-      smplayer
-      filebot
-      anydesk
+      # smplayer
+      # filebot
+      # anydesk
       tailscale
-      qbittorrent
+      # qbittorrent
       clementine
-      arduino
+      # arduino
       bottom
-      spotify
+      # spotify
       appimage-run
-      bruno
+      # bruno
       vscode.fhs
-      protonvpn-gui
-      ticktick
-      joplin-desktop
+      # protonvpn-gui
+      # ticktick
+      # joplin-desktop
       jetbrains.webstorm
-      jetbrains.rust-rover
-      gimp
-      super-productivity
+      # jetbrains.rust-rover
+      # gimp
+      # super-productivity
       nodePackages.prettier
-      slack
-      stremio
-      mailspring
+      # slack
+      # stremio
+      # mailspring
       codeium
-      google-chrome
+      # google-chrome
       jq
-      ngrok
+      # ngrok
       cloudflare-warp
       cloudflared
       docker-compose
