@@ -251,7 +251,6 @@
   environment = {
     systemPackages = with pkgs;[
       kdePackages.packagekit-qt
-      kdePackages.kdenlive
       epson-escpr2
       kdePackages.plasma-nm
       kdePackages.kruler
@@ -294,7 +293,6 @@
       inkscape-with-extensions
       insomnia
       haruna
-      discord
       motrix          
       obs-studio
       nodejs_20
@@ -320,7 +318,6 @@
       qbittorrent
       clementine
       arduino
-      sleuthkit
       bottom
       spotify
       appimage-run

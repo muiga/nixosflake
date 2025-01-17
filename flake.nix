@@ -28,6 +28,7 @@
         shared-modules = [
             home-manager.nixosModules.home-manager
             inputs.disko.nixosModules.disko
+            #lanzaboote.nixosModules.lanzaboote
             {
               home-manager = {
                 useUserPackages = true;
@@ -45,10 +46,6 @@
                 system = system;
                 modules = shared-modules ++
                 [
-                    # main config file
-                    # ./thinkpad/configuration.nix
-
-                    # Pass `inputs` to configuration.nix
                     ({ pkgs, inputs, ... }: {
                     imports = [
                         ./thinkpad/configuration.nix
@@ -56,19 +53,18 @@
                     })
 
                     # Lanzaboote for secure boot
-                    lanzaboote.nixosModules.lanzaboote
-                   ({ pkgs, lib, ... }: {
-                        #environment.systemPackages = [
-                          # For debugging and troubleshooting Secure Boot.
-                          #pkgs.sbctl
-                        #];
-                        boot.loader.systemd-boot.enable = lib.mkForce false;
-                        boot.lanzaboote = {
-                            enable = true;
-                            pkiBundle = "/etc/secureboot";
-                            configurationLimit = 5;
-                       };
-                   })
+                #    ({ pkgs, lib, ... }: {
+                #         #environment.systemPackages = [
+                #           # For debugging and troubleshooting Secure Boot.
+                #           #pkgs.sbctl
+                #         #];
+                #         boot.loader.systemd-boot.enable = lib.mkForce false;
+                #         boot.lanzaboote = {
+                #             enable = true;
+                #             pkiBundle = "/etc/secureboot";
+                #             configurationLimit = 5;
+                #        };
+                #    })
                 ];
             };
             thinkbook= nixpkgs.lib.nixosSystem {
@@ -76,18 +72,13 @@
                 system = system;
                 modules = shared-modules ++
                 [
-                    # main config file
-                    # ./thinkbook/configuration.nix
-                    # This is not a complete NixOS configuration and you need to reference
-                    # your normal configuration here.
-                      ({ pkgs, inputs, ... }: {
+                    ({ pkgs, inputs, ... }: {
                     imports = [
                         ./thinkbook/configuration.nix
                     ];
                     })
 
                     # Lanzaboote for secure boot
-                    #lanzaboote.nixosModules.lanzaboote
                    #({ pkgs, lib, ... }: {
                         # Lanzaboote currently replaces the systemd-boot module.
                         # This setting is usually set to true in configuration.nix
@@ -104,21 +95,5 @@
                 ];
             };
         };
-
-#        # Standalone home-manager configuration entrypoint
-#        homeConfigurations = {
-#             "muiga@thinkpad"= home-manager.lib.homeManagerConfiguration {
-#                inherit pkgs;
-#                modules = [
-#                    ./thinkpad/home.nix
-#                ];
-#            };
-#            "muiga@thinkbook"= home-manager.lib.homeManagerConfiguration {
-#                inherit pkgs;
-#                modules = [
-#                    ./thinkbook/home.nix
-#                ];
-#            };
-#        };
     };
 }
